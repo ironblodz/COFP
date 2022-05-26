@@ -1,3 +1,18 @@
+<?php
+session_start();
+include "connection.php";
+$query = "SELECT id_utilizador,primeiro_nome,telefone,email,apelido FROM utilizador WHERE apelido like 'Escola'";
+$result=$conn->query($query);
+
+if($result-> num_rows >0) {
+    $row = $result-> fetch_assoc();
+}
+?>
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -97,7 +112,7 @@
                         </div>
                         <div class="ms-3">
                             <h5 class="text-primary">Escritório</h5>
-                            <p class="mb-0">Rua Miguel Torga, Leiria</p>
+                            <p class="mb-0"><?= $row['primeiro_nome'] ?> Leiria</p>
                         </div>
                     </div>
                     <div class="d-flex align-items-center mb-3">
@@ -106,7 +121,7 @@
                         </div>
                         <div class="ms-3">
                             <h5 class="text-primary">Telemóvel</h5>
-                            <p class="mb-0">+351 923 021 021</p>
+                            <p class="mb-0">+351 <?= $row['telefone'] ?></p>
                         </div>
                     </div>
                     <div class="d-flex align-items-center">
@@ -115,7 +130,7 @@
                         </div>
                         <div class="ms-3">
                             <h5 class="text-primary">Email</h5>
-                            <p class="mb-0">INFOhelp@gmail.com</p>
+                            <p class="mb-0"><?= $row['email'] ?></p>
                         </div>
                     </div>
                 </div>

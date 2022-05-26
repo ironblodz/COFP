@@ -72,7 +72,7 @@
          
           <a href="formacoes.php" class="nav-item nav-link">Formações</a>
           <a href="workshops.html" class="nav-item nav-link">Workshops</a>
-          <a href="#" class="nav-item nav-link">Candidaturas</a>
+          <a href="#+" class="nav-item nav-link">Candidaturas</a>
           <a href="contacto.html" class="nav-item nav-link">Contacto</a>
           <a href="#" class="nav-item nav-link">FAQ</a>
         </div>
