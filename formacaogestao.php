@@ -77,11 +77,11 @@ $conn->close();
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <div class="navbar-nav ms-auto p-4 p-lg-0">
         <a href="index.html" class="nav-item nav-link active">Inicio</a>
-        <a href="formacoes.html" class="nav-item nav-link">Formações</a>
+        <a href="formacoes.php" class="nav-item nav-link">Formações</a>
         <a href="workshops.html" class="nav-item nav-link">Workshops online</a>
         <a href="#" class="nav-item nav-link">Candidaturas</a>
         <a href="contacto.html" class="nav-item nav-link">Contactos</a>
-        <a href="#" class="nav-item nav-link">FAQ</a>
+        <a href="faq.html" class="nav-item nav-link">FAQ</a>
       </div>
       <a href="login.html" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block"
         >Login<i class="fa fa-arrow-right ms-3"></i
@@ -114,7 +114,7 @@ $conn->close();
         <div class="container">
             <div class="row g-5">
                 <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                    <h6 class="section-title bg-white text-center text-primary px-3">Formação</h6>
+                    <h6 class="section-title bg-white text-center text-primary px-3"><?= $row['categoria'] ?></h6>
                     <h1 class="mb-5"><?= $row['nome'] ?></h1>
                 </div>
             
