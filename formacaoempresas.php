@@ -1,3 +1,16 @@
+<?php
+session_start();
+include "connection.php";
+$query = "SELECT id_formacao,nome,data_formacao,duracao,descricao,categoria FROM formacao WHERE categoria like 'Gestão'";
+$result=$conn->query($query);
+
+if($result-> num_rows >0) {
+    $row = $result-> fetch_assoc();
+}
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -90,13 +103,7 @@
           <div class="row justify-content-center">
               <div class="col-lg-10 text-center">
                   <h1 class="display-3 text-white animated slideInDown">Formação Empresas</h1>
-                  <nav aria-label="breadcrumb">
-                      <ol class="breadcrumb justify-content-center">
-                          <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
-                          <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>
-                          <li class="breadcrumb-item text-white active" aria-current="page">Formações</li>
-                      </ol>
-                  </nav>
+                  
               </div>
           </div>
       </div>
