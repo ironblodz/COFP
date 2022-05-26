@@ -1,3 +1,23 @@
+<?php
+session_start();
+include "connection.php";
+$query = "SELECT id_formacao,nome,data_formacao,duracao,descricao,categoria FROM formacao";
+$result = $conn->query($query);
+
+
+
+
+
+
+$conn->close();
+?>
+
+
+<?php
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) { ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -95,7 +115,7 @@
             <div class="row g-5">
                 <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
                     <h6 class="section-title bg-white text-center text-primary px-3">Formação</h6>
-                    <h1 class="mb-5">FORMAÇÃO DE GESTÃO DE COBRANÇAS</h1>
+                    <h1 class="mb-5"><?= $row['nome'] ?></h1>
                 </div>
             
             <div
@@ -109,9 +129,7 @@
 
                 <p class="mb-4">
                     <i class="fa fa-arrow-right text-primary me-2"></i>  
-                    A formação de Gestão de Cobranças tem como objetivo formar profissionais capazes de
-                     aumentar a eficácia na gestão dos processos de cobranças, de forma a recuperar créditos
-                      e atrasos de pagamento dos/as clientes.
+                    <?= $row['descricao'] ?>
                 </p>
 
                 <h1 class="mb-4">Destinatários</h1>
@@ -129,16 +147,13 @@
                 <h1 class="mb-4">Carga Horária</h1>
                 <p class="mb-4">
                     <i class="fa fa-arrow-right text-primary me-2"></i>
-                    Sessões Teóricas: 15 horas
-                    <br>
-                    <i class="fa fa-arrow-right text-primary me-2"></i>
-                    Total: 15 horas
+                    <?= $row['duracao'] ?> horas
                 </p>
 
                 <h1 class="mb-4">Data da Formação</h1>
                 <p class="mb-4">
                     <i class="fa fa-arrow-right text-primary me-2"></i>
-                    06/06/2022
+                    <?= $row['data_formacao'] ?>
                 </p>
             </div>
           </div>
@@ -157,6 +172,12 @@
     </div>
 
 
+    <?php    }
+                } else {
+                    echo " 0 resultados";
+                }
+
+                ?>
 
     
       
@@ -219,3 +240,6 @@
 </body>
 
 </html>
+
+
+
