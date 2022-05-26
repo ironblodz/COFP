@@ -5,6 +5,8 @@
     --dark: #181d38;
 }
 
+
+
 .fw-medium {
     font-weight: 600 !important;
 }
@@ -48,6 +50,8 @@
 .btn.btn-secondary {
     color: #FFFFFF;
 }
+
+
 
 .btn-square {
     width: 38px;

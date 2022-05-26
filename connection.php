@@ -2,7 +2,7 @@
 $host="localhost";
 $user="root";
 $pass="";
-$database="pastelaria";
+$database="info";
 
 $conn = new mysqli($host,$user,$pass,$database);
 if($conn->connect_errno){
