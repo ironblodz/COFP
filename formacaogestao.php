@@ -103,10 +103,8 @@ $conn->close();
 
     <!-- Team Start -->
     
-    <?php
-                if ($result->num_rows > 0) {
-                    while ($row = $result->fetch_assoc(4)) { ?>
-
+   
+            
     <div class="container-xxl py-5">
         <div class="container">
             <div class="row g-5">
@@ -158,10 +156,6 @@ $conn->close();
 
 
 
-          <?php    }
-                } else {
-                    echo " 0 resultados";
-                } ?>
                 <div class="col-lg-4 col-md-12 wow fadeInUp" data-wow-delay="0.5s">
                 
 
