@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 26-Maio-2022 às 13:46
--- Versão do servidor: 5.7.36
--- versão do PHP: 7.4.26
+-- Tempo de geração: 26-Maio-2022 às 15:24
+-- Versão do servidor: 5.7.31
+-- versão do PHP: 7.3.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -211,7 +211,7 @@ CREATE TABLE IF NOT EXISTS `utilizador` (
   `perfil` enum('formando','admin') NOT NULL DEFAULT 'formando',
   PRIMARY KEY (`id_utilizador`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `utilizador`
@@ -224,7 +224,8 @@ INSERT INTO `utilizador` (`id_utilizador`, `primeiro_nome`, `apelido`, `data_nas
 (4, 'Jhonny', 'Sins', '1978-12-31', '919578945', 'jhonny.bigsins@gmail.com', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'Masculino', 'formando'),
 (5, 'Lana', 'Rhoades', '1996-09-06', '919578946', 'Lana.Rhoades@gmail.com', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'Feminino', 'formando'),
 (6, 'Lee', 'Faker', '1996-05-07', '123456789', 'demonking@gmail.com', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'Masculino', 'formando'),
-(7, 'Abda', 'Ghail', '1976-01-31', '919578948', 'Abda.bigsins@gmail.com', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'Feminino', 'formando');
+(7, 'Abda', 'Ghail', '1976-01-31', '919578948', 'Abda.bigsins@gmail.com', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'Feminino', 'formando'),
+(8, 'Rua Miguel Torga', 'Escola', '2021-05-04', '912321456', 'INFOhelp@gmail.com', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'Indefenido', 'formando');
 
 -- --------------------------------------------------------
 
@@ -250,7 +251,7 @@ CREATE TABLE IF NOT EXISTS `workshop` (
 DROP TABLE IF EXISTS `lista_formacoes`;
 
 DROP VIEW IF EXISTS `lista_formacoes`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `lista_formacoes`  AS SELECT `f`.`categoria` AS `categoria`, `imf`.`caminho` AS `caminho` FROM (`formacao` `f` join `imagens_formacoes` `imf` on((`f`.`id_formacao` = `imf`.`fk_id_formacao`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `lista_formacoes`  AS  select `f`.`categoria` AS `categoria`,`imf`.`caminho` AS `caminho` from (`formacao` `f` join `imagens_formacoes` `imf` on((`f`.`id_formacao` = `imf`.`fk_id_formacao`))) ;
 
 -- --------------------------------------------------------
 
@@ -260,7 +261,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 DROP TABLE IF EXISTS `lista_inscritos`;
 
 DROP VIEW IF EXISTS `lista_inscritos`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `lista_inscritos`  AS SELECT `f`.`nome` AS `nome`, `u`.`primeiro_nome` AS `primeiro_nome`, `u`.`apelido` AS `apelido`, `u`.`email` AS `email` FROM ((`formacao` `f` join `inscricao` `i` on((`f`.`id_formacao` = `i`.`fk_id_formacao`))) join `utilizador` `u` on((`u`.`id_utilizador` = `i`.`fk_id_utilizador`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `lista_inscritos`  AS  select `f`.`nome` AS `nome`,`u`.`primeiro_nome` AS `primeiro_nome`,`u`.`apelido` AS `apelido`,`u`.`email` AS `email` from ((`formacao` `f` join `inscricao` `i` on((`f`.`id_formacao` = `i`.`fk_id_formacao`))) join `utilizador` `u` on((`u`.`id_utilizador` = `i`.`fk_id_utilizador`))) ;
 
 -- --------------------------------------------------------
 
@@ -270,7 +271,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 DROP TABLE IF EXISTS `list_prof`;
 
 DROP VIEW IF EXISTS `list_prof`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `list_prof`  AS SELECT `f`.`nome` AS `nome`, `f`.`categoria` AS `categoria`, `p`.`nome` AS `Nome do professor`, `p`.`area_formacao` AS `area_formacao`, `p`.`habilitacao` AS `habilitacao`, `p`.`email` AS `email` FROM (`formacao` `f` join `professor` `p` on((`f`.`fk_id_professor` = `p`.`id_professor`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `list_prof`  AS  select `f`.`nome` AS `nome`,`f`.`categoria` AS `categoria`,`p`.`nome` AS `Nome do professor`,`p`.`area_formacao` AS `area_formacao`,`p`.`habilitacao` AS `habilitacao`,`p`.`email` AS `email` from (`formacao` `f` join `professor` `p` on((`f`.`fk_id_professor` = `p`.`id_professor`))) ;
 
 -- --------------------------------------------------------
 
@@ -280,7 +281,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 DROP TABLE IF EXISTS `quant_inscritos`;
 
 DROP VIEW IF EXISTS `quant_inscritos`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `quant_inscritos`  AS SELECT count(0) AS `Quantidade Inscrições` FROM `inscricao` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `quant_inscritos`  AS  select count(0) AS `Quantidade Inscrições` from `inscricao` ;
 
 --
 -- Restrições para despejos de tabelas
