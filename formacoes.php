@@ -121,7 +121,7 @@
                   </a>
                 </div>
                 <div class="col-lg-6 col-md-12 wow zoomIn" data-wow-delay="0.3s">
-                  <a class="position-relative d-block overflow-hidden" href="">
+                  <a class="position-relative d-block overflow-hidden" href="design.html">
                     <img class="img-fluid" src="img/cat-2.jpg" alt="" /> 
                     <div
                       class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3"
@@ -133,7 +133,7 @@
                   </a>
                 </div>
                 <div class="col-lg-6 col-md-12 wow zoomIn" data-wow-delay="0.5s">
-                  <a class="position-relative d-block overflow-hidden" href="design.html">
+                  <a class="position-relative d-block overflow-hidden" href="formacaogestao.php">
                     <img class="img-fluid" src="img/cat-3.jpg" alt="" />
                     <div
                       class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3"
