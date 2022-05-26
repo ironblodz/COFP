@@ -156,10 +156,6 @@ $conn->close();
           </div>
             
 
-
-            
-            
-
           <?php    }
                 } else {
                     echo " 0 resultados";
