@@ -6,16 +6,10 @@ $result = $conn->query($query);
 
 
 
-
-
-
 $conn->close();
 ?>
 
 
-<?php
-                if ($result->num_rows > 0) {
-                    while ($row = $result->fetch_assoc()) { ?>
 
 
 <!DOCTYPE html>
@@ -172,12 +166,7 @@ $conn->close();
     </div>
 
 
-    <?php    }
-                } else {
-                    echo " 0 resultados";
-                }
 
-                ?>
 
     
       
