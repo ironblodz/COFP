@@ -160,9 +160,14 @@ $conn->close();
             
             
 
-            
+          <?php    }
+                } else {
+                    echo " 0 resultados";
+                } ?>
                 <div class="col-lg-4 col-md-12 wow fadeInUp" data-wow-delay="0.5s">
-                   
+                
+
+               
                 </div>
             </div>
         </div>
