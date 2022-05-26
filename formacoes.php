@@ -1,6 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-
+  
+<?php
+  session_start();
+  include "connection.php";
+  $query = "SELECT foto,id_produto,nome,descricao_receita FROM produto";
+  $result = $conn->query($query);
+  
+  
+  
+  
+  
+  
+  $conn->close();
+  ?>
 <head>
     <meta charset="utf-8">
     <title>Formações</title>
@@ -57,7 +70,7 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav ms-auto p-4 p-lg-0">
          
-          <a href="formacoes.html" class="nav-item nav-link">Formações</a>
+          <a href="formacoes.php" class="nav-item nav-link">Formações</a>
           <a href="#" class="nav-item nav-link">Workshops</a>
           <a href="#" class="nav-item nav-link">Candidaturas</a>
           <a href="contacto.html" class="nav-item nav-link">Contacto</a>
@@ -102,19 +115,19 @@
                       class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3"
                       style="margin: 1px"
                     >
-                      <h5 class="m-0">Programação</h5>
+                      <h5 class="m-0">Informática</h5>
                       <small class="text-primary">Duas Formações </small>
                     </div>
                   </a>
                 </div>
                 <div class="col-lg-6 col-md-12 wow zoomIn" data-wow-delay="0.3s">
                   <a class="position-relative d-block overflow-hidden" href="">
-                    <img class="img-fluid" src="img/cat-2.jpg" alt="" />
+                    <img class="img-fluid" src="img/cat-2.jpg" alt="" /> 
                     <div
                       class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3"
                       style="margin: 1px"
                     >
-                      <h5 class="m-0">CiberSegurança</h5>
+                      <h5 class="m-0">Saúde</h5>
                       <small class="text-primary">Uma Formação</small>
                     </div>
                   </a>
@@ -126,7 +139,7 @@
                       class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3"
                       style="margin: 1px"
                     >
-                      <h5 class="m-0">Design</h5>
+                      <h5 class="m-0">Gestão</h5>
                       <small class="text-primary">Uma Formação</small>
                     </div>
                   </a>
@@ -149,7 +162,7 @@
                   class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3"
                   style="margin: 1px"
                 >
-                  <h5 class="m-0">Jogos e Multimédia</h5>
+                  <h5 class="m-0">Educação</h5>
                   <small class="text-primary">Duas Formações</small>
                 </div>
               </a>
