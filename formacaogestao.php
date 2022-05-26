@@ -3,7 +3,11 @@ session_start();
 include "connection.php";
 $query = "SELECT id_formacao,nome,data_formacao,duracao,descricao,categoria FROM formacao WHERE categoria = 'Gestão' ";
 $result = $conn->query($query);
-
+if($result-> num_rows >0) {
+    while($row = $result-> fetch_assoc()) {
+        echo "categoria: " .$row["categoria"]. "<br>";
+    }
+}
 
 
 $conn->close();
