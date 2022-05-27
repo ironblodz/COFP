@@ -1,3 +1,18 @@
+<?php
+session_start();
+include "connection.php";
+$query = "SELECT id_utilizador,primeiro_nome,telefone,email,apelido FROM utilizador WHERE apelido like 'Escola'";
+$result=$conn->query($query);
+
+if($result-> num_rows >0) {
+    $row = $result-> fetch_assoc();
+}
+?>
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,15 +58,15 @@
 
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
-        <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
-            <h2 class="m-0 text-primary"><i class="fa fa-book me-3"></i>INFO</h2>
+        <a href="login.php">
+            <img  src="img/logo.png" alt="" width="35%" style="padding-left:10px"/>
         </a>
         <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <div class="navbar-nav ms-auto p-4 p-lg-0">
-            <a href="index.html" class="nav-item nav-link active">Inicio</a>
+          
             <a href="formacoes.html" class="nav-item nav-link">Formações</a>
             <a href="#" class="nav-item nav-link">Workshops</a>
             <a href="#" class="nav-item nav-link">Candidaturas</a>
@@ -97,7 +112,7 @@
                         </div>
                         <div class="ms-3">
                             <h5 class="text-primary">Escritório</h5>
-                            <p class="mb-0">Rua Miguel Torga, Leiria</p>
+                            <p class="mb-0"><?= $row['primeiro_nome'] ?> Leiria</p>
                         </div>
                     </div>
                     <div class="d-flex align-items-center mb-3">
@@ -106,7 +121,7 @@
                         </div>
                         <div class="ms-3">
                             <h5 class="text-primary">Telemóvel</h5>
-                            <p class="mb-0">+351 923 021 021</p>
+                            <p class="mb-0">+351 <?= $row['telefone'] ?></p>
                         </div>
                     </div>
                     <div class="d-flex align-items-center">
@@ -115,7 +130,7 @@
                         </div>
                         <div class="ms-3">
                             <h5 class="text-primary">Email</h5>
-                            <p class="mb-0">INFOhelp@gmail.com</p>
+                            <p class="mb-0"><?= $row['email'] ?></p>
                         </div>
                     </div>
                 </div>
