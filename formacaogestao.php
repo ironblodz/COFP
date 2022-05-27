@@ -1,13 +1,14 @@
 <?php
 session_start();
 include "connection.php";
-$query = "SELECT id_formacao,nome,data_formacao,duracao,descricao,categoria FROM formacao";
-$result = $conn->query($query);
+$query = "SELECT id_formacao,nome,data_formacao,duracao,descricao,categoria FROM formacao WHERE categoria like 'Gestão'";
+$result=$conn->query($query);
 
-
-
-$conn->close();
+if($result-> num_rows >0) {
+    $row = $result-> fetch_assoc();
+}
 ?>
+
 
 
 
@@ -103,9 +104,7 @@ $conn->close();
 
     <!-- Team Start -->
     
-    <?php
-                if ($result->num_rows > 0) {
-                    while ($row = $result->fetch_assoc()) { ?>
+    
 
     <div class="container-xxl py-5">
         <div class="container">
@@ -156,10 +155,11 @@ $conn->close();
           </div>
             
 
-          <?php    }
-                } else {
-                    echo " 0 resultados";
-                } ?>
+
+            
+            
+
+          
                 <div class="col-lg-4 col-md-12 wow fadeInUp" data-wow-delay="0.5s">
                 
 
@@ -236,3 +236,7 @@ $conn->close();
 
 
 
+<?php
+
+$conn->close();
+?>

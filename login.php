@@ -64,19 +64,13 @@ if (!empty($_POST)) {
 
     <!-- container -->
 
-    <header id="head" class="secondary"></header>
+
     <div class="container">
 
-        <ol class="breadcrumb">
-            <li><a href="index.html">Home</a></li>
-            <li class="active">Area Utilizador</li>
-        </ol>
+
 
         <div class="row">
             <!-- fim container -->
-
-
-
 
 
 
@@ -123,7 +117,7 @@ if (!empty($_POST)) {
                                         <b><a href="index.html">Voltar ao website</a></b>
                                     </div>
                                     <div class="col-lg-4 text-right">
-                                        <button class="btn btn-action" type="submit" name="submit">Entrar</button>
+                                        <button class="btn btn-primary" type="submit" name="submit">Entrar</button>
                                     </div>
                                 </div>
                             </form>

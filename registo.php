@@ -39,15 +39,10 @@ if (isset($_POST['submit'])) {
 <body class="home">
 
 
-    <header id="head" class="secondary"></header>
-
     <!-- container -->
     <div class="container">
 
-        <ol class="breadcrumb">
-            <li><a href="index.html">Home</a></li>
-            <li class="active">Registo</li>
-        </ol>
+
 
         <div class="row">
 
