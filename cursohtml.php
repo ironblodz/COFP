@@ -1,3 +1,15 @@
+<?php
+session_start();
+include "connect.php";
+$query = "SELECT id_utilizador,primeiro_nome,telefone,email,apelido FROM utilizador WHERE apelido like 'Escola'";
+$result=$conn->query($query);
+
+if($result-> num_rows >0) {
+    $row = $result-> fetch_assoc();
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,6 +48,7 @@
     
         <!-- Template Stylesheet -->
         <link href="css/cursohtml.css" rel="stylesheet" />
+        <link rel="stylesheet" href="estrela.css">
 </head>
 <body>
 
@@ -67,8 +80,6 @@
       </div>
     </nav>
     <!-- Navbar End -->
-
-
 
 
     <!-- Header Start -->
@@ -141,9 +152,38 @@
         </div>
     </div>
 
+    <h1>Deixe a sua opiniao</h1>
+		<?php
+		if(isset($_SESSION['msg'])){
+			echo $_SESSION['msg']."<br><br>";
+			unset($_SESSION['msg']);
+		}
+		?>
+		<form method="POST" action="processa.php" enctype="multipart/form-data">
+			<div class="estrelas">
+				<input type="radio" id="vazio" name="estrela" value="" checked>
+				
+				<label for="estrela_um"><i class="fa"></i></label>
+				<input type="radio" id="estrela_um" name="estrela" value="1">
+				
+				<label for="estrela_dois"><i class="fa"></i></label>
+				<input type="radio" id="estrela_dois" name="estrela" value="2">
+				
+				<label for="estrela_tres"><i class="fa"></i></label>
+				<input type="radio" id="estrela_tres" name="estrela" value="3">
+				
+				<label for="estrela_quatro"><i class="fa"></i></label>
+				<input type="radio" id="estrela_quatro" name="estrela" value="4">
+				
+				<label for="estrela_cinco"><i class="fa"></i></label>
+				<input type="radio" id="estrela_cinco" name="estrela" value="5"><br><br>
+				
+				<input type="submit" value="Avaliar">
+				
+			</div>
+		</form>
 
 
-  
 
     <!-- Footer Start -->
     <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
