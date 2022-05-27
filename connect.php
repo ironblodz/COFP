@@ -13,4 +13,5 @@ if($conn->connect_errno){
     exit(0);
 }
 $conn->set_charset('utf8');
+
 ?>
