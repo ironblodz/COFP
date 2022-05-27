@@ -1,15 +1,9 @@
 <?php
 session_start();
 include "connection.php";
-$query = "SELECT dtaNascimento,email,Morada,genero,nome,telefone FROM utilizadores";
+$query = "SELECT id_utilizador,primeiro_nome,apelido,data_nasc,telefone,email FROM utilizador where primeiro_nome like 'Rodrigo'";
 $result = $conn->query($query);
 
-
-
-
-
-
-$conn->close();
 ?>
 
 <!DOCTYPE html>
@@ -56,28 +50,28 @@ $conn->close();
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">Nome</th>
-      <th scope="col">Genero</th>
-      <th scope="col">DataNascimento</th>
-      <th scope="col">Email</th>
-      <th scope="col">Morada</th>
+      <th scope="col">Primeiro Nome</th>
+      <th scope="col">Apelido</th>
+      <th scope="col">Data_nasc</th>
       <th scope="col">Telefone</th>
+      <th scope="col">Email</th>
+     
     </tr>
   </thead>
+
+  <tbody>
+
   <?php
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) { ?>
-
-  <tbody>
+         
     <tr>
-      <th scope="row">1</th>
-      <td><?= $row['id_utilizador'] ?></td>
-      <td><?= $row['nome'] ?></td>
-      <td><?= $row['genero'] ?></td>
-      <td><?= $row['dtaNascimento'] ?></td>
-      <td><?= $row['email'] ?></td>
-      <td><?= $row['Morada'] ?></td>
+      <th scope="row"><?= $row['id_utilizador'] ?></th>
+      <td><?= $row['primeiro_nome'] ?></td>
+      <td><?= $row['apelido'] ?></td>
+      <td><?= $row['data_nasc'] ?></td>
       <td><?= $row['telefone'] ?></td>
+      <td><?= $row['email'] ?></td>
     </tr>
     <?php    }
                 } else {
@@ -91,3 +85,7 @@ $conn->close();
 
 </body>
 </html>
+<?php
+
+$conn->close();
+?>
