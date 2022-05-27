@@ -1,49 +1,57 @@
+<?php
+session_start();
+include "connection.php";
+$query = "SELECT id_formacao,nome,data_formacao,duracao,descricao,categoria FROM formacao WHERE categoria like 'Gestão'";
+$result=$conn->query($query);
+
+if($result-> num_rows >0) {
+    $row = $result-> fetch_assoc();
+}
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta charset="utf-8">
+    <title>Gestão de Cobranças</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
 
-        <!-- Favicon -->
-        <link href="img/favicon.ico" rel="icon" />
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
 
-        <!-- Google Web Fonts -->
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap"
-          rel="stylesheet"
-        />
-    
-        <!-- Icon Font Stylesheet -->
-        <link
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
-          rel="stylesheet"
-        />
-        <link
-          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
-          rel="stylesheet"
-        />
-    
-        <!-- Libraries Stylesheet -->
-        <link href="lib/animate/animate.min.css" rel="stylesheet" />
-        <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
-    
-        <!-- Customized Bootstrap Stylesheet -->
-        <link href="css/bootstrap.min.css" rel="stylesheet" />
-    
-        <!-- Template Stylesheet -->
-        <link href="css/design.css" rel="stylesheet" />
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
 </head>
+
 <body>
+
 
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
-      <a href="index.html">
-          <img  src="img/logo.png" alt="" width="35%" style="padding-left:10px"/>
-      </a>
+    <a href="index.html">
+        <img  src="img/logo.png" alt="" width="35%" style="padding-left:10px"/>
+    </a>
     <button
       type="button"
       class="navbar-toggler me-4"
@@ -54,13 +62,14 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <div class="navbar-nav ms-auto p-4 p-lg-0">
+        <a href="index.html" class="nav-item nav-link active">Inicio</a>
         <a href="formacoes.php" class="nav-item nav-link">Formações</a>
-        <a href="workshops.php" class="nav-item nav-link">Workshops online</a>
-        <a href="formulario.php" class="nav-item nav-link">Candidaturas</a>
-        <a href="contacto.php" class="nav-item nav-link">Contactos</a>
+        <a href="workshops.html" class="nav-item nav-link">Workshops online</a>
+        <a href="#" class="nav-item nav-link">Candidaturas</a>
+        <a href="contacto.html" class="nav-item nav-link">Contactos</a>
         <a href="faq.html" class="nav-item nav-link">FAQ</a>
       </div>
-      <a href="login.php" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block"
+      <a href="login.html" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block"
         >Login<i class="fa fa-arrow-right ms-3"></i
       ></a>
     </div>
@@ -68,55 +77,25 @@
     <!-- Navbar End -->
 
 
-
-
     <!-- Header Start -->
-    <div class="container-fluid bg-primary py-5 mb-5 page-header1">
+    <div class="container-fluid bg-primary py-5 mb-5 page-header">
         <div class="container py-5">
             <div class="row justify-content-center">
                 <div class="col-lg-10 text-center">
-                    <h1 class="display-3 text-white animated slideInDown">Web Design</h1>
+                    <h1 class="display-3 text-white animated slideInDown">Formações</h1>
+                    <nav aria-label="breadcrumb">
+                        
+                    </nav>
                 </div>
             </div>
         </div>
     </div>
     <!-- Header End -->
 
-    <!-- secção cursos -->
-  <div class="main">
-    <ul class="cards">
-      <li class="cards_item">
-        <div class="card">
-          <div class="card_image"><img src="img/adobe illustrator.png"></div>
-          <div class="card_content">
-            <h2 class="card_title">Adobe Illustrator</h2>
-            <p class="card_text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-            <button class="btn1 card_btn">Ver curso</button>
-          </div>
-        </div>
-      </li>
-      <li class="cards_item">
-        <div class="card">
-          <div class="card_image"><img src="img/pho.png"></div>
-          <div class="card_content">
-            <h2 class="card_title">Photoshop</h2>
-            <p class="card_text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-            <button class="btn1 card_btn">Ver curso</button>
-          </div>
-        </div>
-      </li>
-      <li class="cards_item">
-        <div class="card">
-          <div class="card_image"><img src="img/xd.png"></div>
-          <div class="card_content">
-            <h2 class="card_title">Adobe XD</h2>
-            <p class="card_text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-            <button class="btn1 card_btn">Ver curso</button>
-          </div>
-        </div>
-      </li>
-
-
+    
+      
+    <!-- Team End -->
+        
 
     <!-- Footer Start -->
     <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
@@ -154,12 +133,12 @@
       </div>
       
   </div>
-      <!-- Footer End -->
-  
-      <!-- Back to Top -->
-      <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"
-        ><i class="bi bi-arrow-up"></i
-      ></a>
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -171,6 +150,12 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
-
 </body>
+
 </html>
+
+
+<?php
+
+$conn->close();
+?>
