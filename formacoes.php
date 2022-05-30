@@ -73,7 +73,7 @@
           <a href="formacoes.php" class="nav-item nav-link">Formações</a>
           <a href="workshops.html" class="nav-item nav-link">Workshops</a>
           <a href="#+" class="nav-item nav-link">Candidaturas</a>
-          <a href="contacto.html" class="nav-item nav-link">Contacto</a>
+          <a href="contacto.php" class="nav-item nav-link">Contacto</a>
           <a href="#" class="nav-item nav-link">FAQ</a>
         </div>
         <a href="login.php" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block"

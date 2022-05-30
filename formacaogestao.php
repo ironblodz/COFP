@@ -24,7 +24,7 @@ if($result-> num_rows >0) {
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <link href="img/logoicon.ico" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -75,7 +75,7 @@ if($result-> num_rows >0) {
         <a href="formacoes.php" class="nav-item nav-link">Formações</a>
         <a href="workshops.html" class="nav-item nav-link">Workshops online</a>
         <a href="#" class="nav-item nav-link">Candidaturas</a>
-        <a href="contacto.html" class="nav-item nav-link">Contactos</a>
+        <a href="contacto.php" class="nav-item nav-link">Contactos</a>
         <a href="faq.html" class="nav-item nav-link">FAQ</a>
       </div>
       <a href="login.html" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block"
