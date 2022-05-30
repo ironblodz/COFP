@@ -10,9 +10,6 @@ if($result-> num_rows >0) {
 ?>
 
 
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,7 +21,7 @@ if($result-> num_rows >0) {
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="img/logoicon.ico" rel="icon">
+    <link href="img/favicon.ico" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -75,21 +72,41 @@ if($result-> num_rows >0) {
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <div class="navbar-nav ms-auto p-4 p-lg-0">
         <a href="formacoes.php" class="nav-item nav-link">Formações</a>
-<<<<<<< HEAD
-        <a href="workshops.html" class="nav-item nav-link">Workshops online</a>
-        <a href="#" class="nav-item nav-link">Candidaturas</a>
-=======
         <a href="workshops.php" class="nav-item nav-link">Workshops online</a>
         <a href="formulario.php" class="nav-item nav-link">Candidaturas</a>
->>>>>>> af6120d9ebe8df0a92e1d20bdd793985cc0c64f1
         <a href="contacto.php" class="nav-item nav-link">Contactos</a>
+<<<<<<< HEAD
+        <a href="faq.php" class="nav-item nav-link">FAQ</a>
+=======
         <a href="faq.html" class="nav-item nav-link">FAQ</a>
+>>>>>>> 373f345bb2b1c140ee726ecbe043d4449e91aa00
       </div>
       <a href="login.php" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block"
         >Login<i class="fa fa-arrow-right ms-3"></i
       ></a>
     </div>
+<<<<<<< HEAD
+  </nav> <a href="index.html">
+            <img src="img/logo.png" alt="" width="35%" style="padding-left:10px" />
+        </a>
+        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                <a href="formacoes.php" class="nav-item nav-link">Formações</a>
+                <a href="workshops.php" class="nav-item nav-link">Workshops online</a>
+                <a href="formulario.php" class="nav-item nav-link">Candidaturas</a>
+                <a href="contacto.php" class="nav-item nav-link">Contactos</a>
+                <a href="faq.php" class="nav-item nav-link">FAQ</a>
+            </div>
+            <a href="login.php" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Login<i
+                    class="fa fa-arrow-right ms-3"></i></a>
+        </div>
+    </nav>
+=======
   </nav>
+>>>>>>> 373f345bb2b1c140ee726ecbe043d4449e91aa00
     <!-- Navbar End -->
 
 
@@ -108,10 +125,7 @@ if($result-> num_rows >0) {
     </div>
     <!-- Header End -->
 
-
     <!-- Team Start -->
-
-
 
     <div class="container-xxl py-5">
         <div class="container">
@@ -123,18 +137,17 @@ if($result-> num_rows >0) {
 
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style="min-height: 400px">
                     <div class="position-relative h-100">
-                        <h1 class="mb-4">Formação</h1>
-
+                        <h1 class="mb-4">Curso HTML</h1>
 
                         <p class="mb-4">
                             <i class="fa fa-arrow-right text-primary me-2"></i>
                             <?= $row['descricao'] ?>
                         </p>
 
-                        <h1 class="mb-4">Destinatários</h1>
+                        <h1 class="mb-4">Descrição do curso</h1>
                         <p class="mb-4">
                             <i class="fa fa-arrow-right text-primary me-2"></i>
-                            Profissionais da área com necessidade de desenvolver e aperfeiçoar as competências.
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam saepe delectus incidunt quod eaque molestiae numquam ea, inventore necessitatibus, ipsum maiores quaerat, mollitia possimus et dignissimos amet eveniet minima aspernatur?
                         </p>
 
                         <h1 class="mb-4">Métodos de Formação</h1>
@@ -149,7 +162,7 @@ if($result-> num_rows >0) {
                             <?= $row['duracao'] ?> horas
                         </p>
 
-                        <h1 class="mb-4">Data da Formação</h1>
+                        <h1 class="mb-4">Data de formação</h1>
                         <p class="mb-4">
                             <i class="fa fa-arrow-right text-primary me-2"></i>
                             <?= $row['data_formacao'] ?>
@@ -171,10 +184,6 @@ if($result-> num_rows >0) {
             </div>
         </div>
     </div>
-
-
-
-
 
 
     <!-- Team End -->
