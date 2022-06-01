@@ -63,7 +63,6 @@
       <a href="index.html">
           <img  src="img/logo.png" alt="" width="35%" style="padding-left:10px"/>
       </a>
-<<<<<<< HEAD
       <button
         type="button"
         class="navbar-toggler me-4"
@@ -84,7 +83,6 @@
         <a href="login.php" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block"
           >Login<i class="fa fa-arrow-right ms-3"></i
         ></a>
-=======
     <button
       type="button"
       class="navbar-toggler me-4"
@@ -100,7 +98,7 @@
         <a href="formulario.php" class="nav-item nav-link">Candidaturas</a>
         <a href="contacto.php" class="nav-item nav-link">Contactos</a>
         <a href="faq.html" class="nav-item nav-link">FAQ</a>
->>>>>>> af6120d9ebe8df0a92e1d20bdd793985cc0c64f1
+
       </div>
       <a href="login.php" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block"
         >Login<i class="fa fa-arrow-right ms-3"></i
