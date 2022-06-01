@@ -75,13 +75,8 @@ if($result-> num_rows >0) {
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <div class="navbar-nav ms-auto p-4 p-lg-0">
         <a href="formacoes.php" class="nav-item nav-link">Formações</a>
-<<<<<<< HEAD
-        <a href="workshops.html" class="nav-item nav-link">Workshops online</a>
-        <a href="#" class="nav-item nav-link">Candidaturas</a>
-=======
         <a href="workshops.php" class="nav-item nav-link">Workshops online</a>
         <a href="formulario.php" class="nav-item nav-link">Candidaturas</a>
->>>>>>> af6120d9ebe8df0a92e1d20bdd793985cc0c64f1
         <a href="contacto.php" class="nav-item nav-link">Contactos</a>
         <a href="faq.html" class="nav-item nav-link">FAQ</a>
       </div>

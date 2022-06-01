@@ -1,7 +1,8 @@
 <?php
 session_start();
 include "connection.php";
-$query = "SELECT id_utilizador,primeiro_nome,apelido,data_nasc,telefone,email FROM utilizador where primeiro_nome like 'Rodrigo'";
+$query = "SELECT id_utilizador,primeiro_nome,apelido,data_nasc,telefone,email FROM utilizador";
+
 $result = $conn->query($query);
 
 ?>
@@ -55,6 +56,7 @@ $result = $conn->query($query);
       <th scope="col">Data_nasc</th>
       <th scope="col">Telefone</th>
       <th scope="col">Email</th>
+      <th scope="col">Inscrito em:</th>
      
     </tr>
   </thead>
@@ -72,6 +74,18 @@ $result = $conn->query($query);
       <td><?= $row['data_nasc'] ?></td>
       <td><?= $row['telefone'] ?></td>
       <td><?= $row['email'] ?></td>
+      <td><?php 
+      $query = "SELECT nome FROM lista_inscritos where id_utilizador=".$row['id_utilizador'];
+
+      $result2 = $conn->query($query);
+      if ($result2->num_rows > 0) {
+        while ($row = $result2->fetch_assoc()) { 
+          echo($row['nome'].'<br>');
+      }
+                } else {
+                    echo "-";
+                }  
+      ?></td>
     </tr>
     <?php    }
                 } else {

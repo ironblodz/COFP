@@ -63,28 +63,6 @@
       <a href="index.html">
           <img  src="img/logo.png" alt="" width="35%" style="padding-left:10px"/>
       </a>
-<<<<<<< HEAD
-      <button
-        type="button"
-        class="navbar-toggler me-4"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarCollapse"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <div class="navbar-nav ms-auto p-4 p-lg-0">
-         
-          <a href="formacoes.php" class="nav-item nav-link">Formações</a>
-          <a href="workshops.html" class="nav-item nav-link">Workshops</a>
-          <a href="#+" class="nav-item nav-link">Candidaturas</a>
-          <a href="contacto.php" class="nav-item nav-link">Contacto</a>
-          <a href="#" class="nav-item nav-link">FAQ</a>
-        </div>
-        <a href="login.php" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block"
-          >Login<i class="fa fa-arrow-right ms-3"></i
-        ></a>
-=======
     <button
       type="button"
       class="navbar-toggler me-4"
@@ -100,7 +78,6 @@
         <a href="formulario.php" class="nav-item nav-link">Candidaturas</a>
         <a href="contacto.php" class="nav-item nav-link">Contactos</a>
         <a href="faq.html" class="nav-item nav-link">FAQ</a>
->>>>>>> af6120d9ebe8df0a92e1d20bdd793985cc0c64f1
       </div>
       <a href="login.php" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block"
         >Login<i class="fa fa-arrow-right ms-3"></i
@@ -138,7 +115,7 @@
                             <a class="position-relative d-block overflow-hidden" href="programação.html">
                                 <img class="img-fluid" src="img/cat-1.jpg" alt="" />
                                 <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3"
-                                    style="margin: 1px">
+                                    style="margin: 0px">
                                     <h5 class="m-0">Informática</h5>
                                     <small class="text-primary">Duas Formações </small>
                                 </div>
@@ -148,7 +125,7 @@
                             <a class="position-relative d-block overflow-hidden" href="design.html">
                                 <img class="img-fluid" src="img/cat-2.jpg" alt="" />
                                 <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3"
-                                    style="margin: 1px">
+                                    style="margin: 0px">
                                     <h5 class="m-0">Saúde</h5>
                                     <small class="text-primary">Uma Formação</small>
                                 </div>
@@ -158,7 +135,7 @@
                             <a class="position-relative d-block overflow-hidden" href="formacaogestao.php">
                                 <img class="img-fluid" src="img/cat-3.jpg" alt="" />
                                 <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3"
-                                    style="margin: 1px">
+                                    style="margin: 0px">
                                     <h5 class="m-0">Gestão</h5>
                                     <small class="text-primary">Uma Formação</small>
                                 </div>
@@ -168,10 +145,10 @@
                 </div>
                 <div class="col-lg-5 col-md-6 wow zoomIn" data-wow-delay="0.7s" style="min-height: 350px">
                     <a class="position-relative d-block h-100 overflow-hidden" href="">
-                        <img class="img-fluid position-absolute w-100 h-100" src="img/cat-4.jpg" alt=""
+                        <img class="img-fluid position-absolute w-100 h-100 " src="img/cat-4.jpg" alt=""
                             style="object-fit: cover" />
                         <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3"
-                            style="margin: 1px">
+                            style="margin: 0px ">
                             <h5 class="m-0">Educação</h5>
                             <small class="text-primary">Duas Formações</small>
                         </div>
