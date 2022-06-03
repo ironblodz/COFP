@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 26-Maio-2022 às 15:24
+-- Tempo de geração: 03-Jun-2022 às 08:49
 -- Versão do servidor: 5.7.31
 -- versão do PHP: 7.3.21
 
@@ -95,7 +95,7 @@ CREATE TABLE IF NOT EXISTS `inscricao` (
   PRIMARY KEY (`id_inscricao`),
   KEY `fk_id_formacao` (`fk_id_formacao`),
   KEY `fk_id_utilizador` (`fk_id_utilizador`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `inscricao`
@@ -104,7 +104,8 @@ CREATE TABLE IF NOT EXISTS `inscricao` (
 INSERT INTO `inscricao` (`id_inscricao`, `fk_id_formacao`, `fk_id_utilizador`, `data_inscricao`) VALUES
 (1, 1, 3, '2022-05-28'),
 (2, 1, 4, '2022-05-30'),
-(3, 1, 5, '2022-05-30');
+(3, 1, 5, '2022-05-30'),
+(4, 2, 3, '2022-06-01');
 
 -- --------------------------------------------------------
 
@@ -130,6 +131,7 @@ CREATE TABLE IF NOT EXISTS `lista_inscritos` (
 ,`primeiro_nome` varchar(60)
 ,`apelido` varchar(60)
 ,`email` varchar(100)
+,`id_utilizador` int(11)
 );
 
 -- --------------------------------------------------------
@@ -146,6 +148,7 @@ CREATE TABLE IF NOT EXISTS `list_prof` (
 ,`area_formacao` text
 ,`habilitacao` enum('Licenciatura','Mestrado','Doutoramento')
 ,`email` varchar(100)
+,`formacao` int(11)
 );
 
 -- --------------------------------------------------------
@@ -261,7 +264,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 DROP TABLE IF EXISTS `lista_inscritos`;
 
 DROP VIEW IF EXISTS `lista_inscritos`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `lista_inscritos`  AS  select `f`.`nome` AS `nome`,`u`.`primeiro_nome` AS `primeiro_nome`,`u`.`apelido` AS `apelido`,`u`.`email` AS `email` from ((`formacao` `f` join `inscricao` `i` on((`f`.`id_formacao` = `i`.`fk_id_formacao`))) join `utilizador` `u` on((`u`.`id_utilizador` = `i`.`fk_id_utilizador`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `lista_inscritos`  AS  select `f`.`nome` AS `nome`,`u`.`primeiro_nome` AS `primeiro_nome`,`u`.`apelido` AS `apelido`,`u`.`email` AS `email`,`u`.`id_utilizador` AS `id_utilizador` from ((`formacao` `f` join `inscricao` `i` on((`f`.`id_formacao` = `i`.`fk_id_formacao`))) join `utilizador` `u` on((`u`.`id_utilizador` = `i`.`fk_id_utilizador`))) ;
 
 -- --------------------------------------------------------
 
@@ -271,7 +274,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 DROP TABLE IF EXISTS `list_prof`;
 
 DROP VIEW IF EXISTS `list_prof`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `list_prof`  AS  select `f`.`nome` AS `nome`,`f`.`categoria` AS `categoria`,`p`.`nome` AS `Nome do professor`,`p`.`area_formacao` AS `area_formacao`,`p`.`habilitacao` AS `habilitacao`,`p`.`email` AS `email` from (`formacao` `f` join `professor` `p` on((`f`.`fk_id_professor` = `p`.`id_professor`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `list_prof`  AS  select `f`.`nome` AS `nome`,`f`.`categoria` AS `categoria`,`p`.`nome` AS `Nome do professor`,`p`.`area_formacao` AS `area_formacao`,`p`.`habilitacao` AS `habilitacao`,`p`.`email` AS `email`,`f`.`id_formacao` AS `formacao` from (`formacao` `f` join `professor` `p` on((`f`.`fk_id_professor` = `p`.`id_professor`))) ;
 
 -- --------------------------------------------------------
 
