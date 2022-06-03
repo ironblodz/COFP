@@ -1,12 +1,7 @@
 <?php
 session_start();
 include "connection.php";
-<<<<<<< HEAD
-$query = "SELECT id_utilizador,primeiro_nome,apelido,data_nasc,telefone,email FROM utilizador ";
-=======
-$query = "SELECT id_utilizador,primeiro_nome,apelido,data_nasc,telefone,email FROM utilizador";
-
->>>>>>> d443584486db0b8ba937712d7472e0ac6b14d63f
+$query = "SELECT id_formacao,nome,data_formacao,duracao,descricao,categoria FROM formacao ";
 $result = $conn->query($query);
 
 ?>
@@ -106,12 +101,11 @@ $result = $conn->query($query);
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">Primeiro Nome</th>
-      <th scope="col">Apelido</th>
-      <th scope="col">Data_nasc</th>
-      <th scope="col">Telefone</th>
-      <th scope="col">Email</th>
-      <th scope="col">Inscrito em:</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Descrição</th>
+      <th scope="col">Data da Formação</th>
+      <th scope="col">Duração</th>
+      <th scope="col">Categoria</th>
      
     </tr>
   </thead>
@@ -123,24 +117,12 @@ $result = $conn->query($query);
                     while ($row = $result->fetch_assoc()) { ?>
          
     <tr>
-      <th scope="row"><?= $row['id_utilizador'] ?></th>
-      <td><?= $row['primeiro_nome'] ?></td>
-      <td><?= $row['apelido'] ?></td>
-      <td><?= $row['data_nasc'] ?></td>
-      <td><?= $row['telefone'] ?></td>
-      <td><?= $row['email'] ?></td>
-      <td><?php 
-      $query = "SELECT nome FROM lista_inscritos where id_utilizador=".$row['id_utilizador'];
-
-      $result2 = $conn->query($query);
-      if ($result2->num_rows > 0) {
-        while ($row = $result2->fetch_assoc()) { 
-          echo($row['nome'].'<br>');
-      }
-                } else {
-                    echo "-";
-                }  
-      ?></td>
+      <th scope="row"><?= $row['id_formacao'] ?></th>
+      <td><?= $row['nome'] ?></td>
+      <td><?= $row['descricao'] ?></td>
+      <td><?= $row['data_formacao'] ?></td>
+      <td><?= $row['duracao'] ?></td>
+      <td><?= $row['categoria'] ?></td>
     </tr>
     <?php    }
                 } else {
