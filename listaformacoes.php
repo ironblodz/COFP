@@ -1,23 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <?php
-  session_start();
-  include "connection.php";
-  $query = "SELECT foto,id_produto,nome,descricao_receita FROM produto";
-  $result = $conn->query($query);
-  
-  
-  
-  
-  
-  
-  $conn->close();
-  ?>
+session_start();
+include "connection.php";
+$query = "SELECT id_formacao,nome,data_formacao,duracao,descricao,categoria FROM formacao ";
+$result = $conn->query($query);
 
+?>
+
+<!DOCTYPE html>
+
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
     <meta charset="utf-8">
-    <title>Formações</title>
+    <title>Formulário</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -28,9 +26,7 @@
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
@@ -45,11 +41,11 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
-</head>
 
 <body>
-    <!-- Spinner Start -->
-    <div id="spinner"
+
+  <!-- Spinner Start -->
+  <div id="spinner"
         class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
         <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
             <span class="sr-only">Loading...</span>
@@ -57,9 +53,8 @@
     </div>
     <!-- Spinner End -->
 
-
-    <!-- Navbar Start -->
-    <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
+<!-- Navbar Start -->
+<nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
       <a href="index.html">
           <img  src="img/logo.png" alt="" width="35%" style="padding-left:10px"/>
       </a>
@@ -86,86 +81,61 @@
   </nav>
     <!-- Navbar End -->
 
-    <!-- Header Start -->
-    <div class="container-fluid bg-primary py-5 mb-5 page-header">
+       <!-- Header Start -->
+       <div class="container-fluid bg-primary py-5 mb-5 page-header">
         <div class="container py-5">
             <div class="row justify-content-center">
                 <div class="col-lg-10 text-center">
-                    <h1 class="display-3 text-white animated slideInDown">Formações</h1>
+                    <h1 class="display-3 text-white animated slideInDown">Formulário</h1>
+                    <nav aria-label="breadcrumb">
+
+                    </nav>
                 </div>
             </div>
         </div>
     </div>
     <!-- Header End -->
 
+<table class="table">
 
-    <!-- Categories Start -->
-    <div class="container-xxl py-5 category">
-        <div class="container">
-            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                <h6 class="section-title bg-white text-center text-primary px-3">
-                    Categories
-                </h6>
-                <h1 class="mb-5">Formações</h1>
-            </div>
-            <div class="row g-3">
-                <div class="col-lg-7 col-md-6">
-                    <div class="row g-3">
-                        <div class="col-lg-12 col-md-12 wow zoomIn" data-wow-delay="0.1s">
-                            <a class="position-relative d-block overflow-hidden" href="programação.html">
-                                <img class="img-fluid" src="img/cat-1.jpg" alt="" />
-                                <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3"
-                                    style="margin: 0px">
-                                    <h5 class="m-0">Informática</h5>
-                                    <small class="text-primary">Duas Formações </small>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-lg-6 col-md-12 wow zoomIn" data-wow-delay="0.3s">
-                            <a class="position-relative d-block overflow-hidden" href="design.html">
-                                <img class="img-fluid" src="img/cat-2.jpg" alt="" />
-                                <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3"
-                                    style="margin: 0px">
-                                    <h5 class="m-0">Saúde</h5>
-                                    <small class="text-primary">Uma Formação</small>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-lg-6 col-md-12 wow zoomIn" data-wow-delay="0.5s">
-                            <a class="position-relative d-block overflow-hidden" href="formacaogestao.php">
-                                <img class="img-fluid" src="img/cat-3.jpg" alt="" />
-                                <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3"
-                                    style="margin: 0px">
-                                    <h5 class="m-0">Gestão</h5>
-                                    <small class="text-primary">Uma Formação</small>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-5 col-md-6 wow zoomIn" data-wow-delay="0.7s" style="min-height: 350px">
-                    <a class="position-relative d-block h-100 overflow-hidden" href="">
-                        <img class="img-fluid position-absolute w-100 h-100" src="img/cat-4.jpg" alt=""
-                            style="object-fit: cover" />
-                        <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3"
-                            style="margin: 0px">
-                            <h5 class="m-0">Educação</h5>
-                            <small class="text-primary">Duas Formações</small>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Categories Start -->
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Descrição</th>
+      <th scope="col">Data da Formação</th>
+      <th scope="col">Duração</th>
+      <th scope="col">Categoria</th>
+     
+    </tr>
+  </thead>
 
-    <!-- Courses Start -->
+  <tbody>
 
+  <?php
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) { ?>
+         
+    <tr>
+      <th scope="row"><?= $row['id_formacao'] ?></th>
+      <td><?= $row['nome'] ?></td>
+      <td><?= $row['descricao'] ?></td>
+      <td><?= $row['data_formacao'] ?></td>
+      <td><?= $row['duracao'] ?></td>
+      <td><?= $row['categoria'] ?></td>
+    </tr>
+    <?php    }
+                } else {
+                    echo " 0 resultados";
+                }
 
+                ?>
+</table>
 
+  </tbody>
 
-    <!-- Footer Start -->
-    <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
+      <!-- Footer Start -->
+      <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
         <div class="container py-5">
             <div class="row g-5">
                 <div class="col-lg-3 col-md-6">
@@ -203,7 +173,6 @@
     </div>
     <!-- Footer End -->
 
-
     <!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
 
@@ -218,6 +187,10 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
-</body>
 
+</body>
 </html>
+<?php
+
+$conn->close();
+?>

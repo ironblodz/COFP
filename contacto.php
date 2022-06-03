@@ -22,7 +22,7 @@ if($result-> num_rows >0) {
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <link href="img/logoicon.ico" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -66,20 +66,6 @@ if($result-> num_rows >0) {
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
-<<<<<<< HEAD
-          <div class="navbar-nav ms-auto p-4 p-lg-0">
-          
-            <a href="formacoes.php" class="nav-item nav-link">Formações</a>
-            <a href="#" class="nav-item nav-link">Workshops</a>
-            <a href="#" class="nav-item nav-link">Candidaturas</a>
-            <a href="contacto.php" class="nav-item nav-link">Contacto</a>
-            <a href="#" class="nav-item nav-link">FAQ</a>
-          </div>
-            <a href="login.html" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block"
-              >Login<i class="fa fa-arrow-right ms-3"></i
-            ></a>
-          </div>
-=======
             <div class="navbar-nav ms-auto p-4 p-lg-0">
                 <a href="formacoes.php" class="nav-item nav-link">Formações</a>
                 <a href="workshops.php" class="nav-item nav-link">Workshops online</a>
@@ -90,7 +76,6 @@ if($result-> num_rows >0) {
             <a href="login.php" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Login<i
                     class="fa fa-arrow-right ms-3"></i></a>
         </div>
->>>>>>> af6120d9ebe8df0a92e1d20bdd793985cc0c64f1
     </nav>
     <!-- Navbar End -->
 

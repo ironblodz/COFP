@@ -75,17 +75,12 @@ if($result-> num_rows >0) {
         <a href="workshops.php" class="nav-item nav-link">Workshops online</a>
         <a href="formulario.php" class="nav-item nav-link">Candidaturas</a>
         <a href="contacto.php" class="nav-item nav-link">Contactos</a>
-<<<<<<< HEAD
         <a href="faq.php" class="nav-item nav-link">FAQ</a>
-=======
-        <a href="faq.html" class="nav-item nav-link">FAQ</a>
->>>>>>> 373f345bb2b1c140ee726ecbe043d4449e91aa00
       </div>
       <a href="login.php" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block"
         >Login<i class="fa fa-arrow-right ms-3"></i
       ></a>
     </div>
-<<<<<<< HEAD
   </nav> <a href="index.html">
             <img src="img/logo.png" alt="" width="35%" style="padding-left:10px" />
         </a>
@@ -104,9 +99,6 @@ if($result-> num_rows >0) {
                     class="fa fa-arrow-right ms-3"></i></a>
         </div>
     </nav>
-=======
-  </nav>
->>>>>>> 373f345bb2b1c140ee726ecbe043d4449e91aa00
     <!-- Navbar End -->
 
 
