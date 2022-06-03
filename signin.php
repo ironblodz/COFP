@@ -7,29 +7,29 @@ if (!empty($_POST)) {
 
   if (isset($_POST['email'])) $email = trim($_POST['email']);
   else $email = "";
-  if (isset($_POST['pass'])) $password = trim($_POST['password']);
-  else $password = "";
+  if (isset($_POST['pass'])) $pass = trim($_POST['pass']);
+  else $pass = "";
   if (strlen($email) == 0)
-    $errors['email'] = 'Empty email';
-  if (strlen($password) == 0)
-    $errors['pass'] = 'Empty password';
+    $errors['email'] = 'Email é um campo obrigatorio';
+  if (strlen($pass) == 0)
+    $errors['pass'] = 'Password é um campo obrigatorio';
   if (count($errors) == 0) {
-    $sql = "select primeiro_nome,pass from utilizador where email='$email' ";
+    $sql = "select primeiro_nome,apelido,pass from utilizador where email='$email' ";
     $aux = 0;
-    $result = $mysqli->query($sql);
+    $result = $conn->query($sql);
     if ($result) {
 
       $user = $result->fetch_assoc();
-      if (hash('sha512', $password) == $user['pass']) {
+      if (password_verify($pass, $user['pass'])) {
         $aux = 1;
       }
     }
     if ($aux == 1) { // Some dummy authentication
       $_SESSION['authenticated'] = true;
-      $_SESSION['username'] = $user['primeiro_nome'];
+      $_SESSION['username'] = $user['primeiro_nome'].' '.$user['apelido'];
       header('Location: admin/index.html');
     } else {
-      $errors['auth'] = 'Authentication failed';
+      $errors['auth'] = 'Autenticação falhada: email/password não correspondem a dados existentes';
     }
   }
 }
@@ -89,24 +89,39 @@ if (!empty($_POST)) {
                                 <h3 class="text-primary">Login</h3>
                             </a>
                         </div>
-                        <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="floatingInput"
-                                placeholder="name@example.com" />
-                            <label for="floatingInput">Email address</label>
+                        <?php if (isset($errors['auth'])) { ?>
+                        <div class=" text-danger"><?= $errors['auth'] ?>
                         </div>
-                        <div class="form-floating mb-4">
-                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password" />
-                            <label for="floatingPassword">Password</label>
-                        </div>
-                        <div class="d-flex align-items-center justify-content-between mb-4">
-                            <a href="">Perdeu a password?</a>
-                        </div>
-                        <button type="submit" class="btn btn-primary py-3 w-100 mb-4">
-                            Entrar
-                        </button>
-                        <p class="text-center mb-0">
-                            Não tens conta?<a href="signup.php"> Regista-te</a>
-                        </p>
+                        <?php } ?>
+                        <form action="#" method="post">
+                            <div class="form-floating mb-3">
+                                <input type="email" class="form-control" id="floatingInput" name="email"
+                                    placeholder="name@example.com" />
+                                <label for="floatingInput">Email address</label>
+                                <?php if (isset($errors['email'])) { ?>
+                                <div class=" text-danger"><?= $errors['email'] ?>
+                                </div>
+                                <?php } ?>
+                            </div>
+                            <div class="form-floating mb-4">
+                                <input type="password" class="form-control" id="floatingPassword" placeholder="Password"
+                                    name="pass" />
+                                <label for="floatingPassword">Password</label>
+                                <?php if (isset($errors['pass'])) { ?>
+                                <div class=" text-danger"><?= $errors['pass'] ?>
+                                </div>
+                                <?php } ?>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between mb-4">
+                                <a href="">Perdeu a password?</a>
+                            </div>
+                            <button type="submit" class="btn btn-primary py-3 w-100 mb-4">
+                                Entrar
+                            </button>
+                            <p class="text-center mb-0">
+                                Não tens conta?<a href="signup.php"> Regista-te</a>
+                            </p>
+                        </form>
                     </div>
                 </div>
             </div>

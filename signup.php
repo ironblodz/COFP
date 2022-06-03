@@ -3,18 +3,33 @@
 session_start();
 include("connection.php");
 
-
+$errors = [];
+$username = '';
+$apelido = '';
+$email = '';
 if (isset($_POST['submit'])) {
 
   $username = $_POST['primeiro_nome'];
   $apelido = $_POST['apelido'];
   $email = $_POST['email'];
-  $password =  hash('sha512', $_POST['pass']);
-  password_verify($password,'pass');
+  $pass =  $_POST['password'];
+  $cpass =  $_POST['confirmPassword'];
+  if ($pass != $cpass) {
+    $errors['password'] = "As passwords indicadas não são iguais";
+  }
 
-  $sql = "INSERT INTO registos (primeiro_nome,apelido,email,pass) VALUES('$username','$apelido','$email','$password')";
+  if (count($errors)==0) {
+    $password = password_hash($pass, PASSWORD_DEFAULT);
+    $sql = "INSERT INTO utilizador (primeiro_nome,apelido,email,pass) VALUES('$username','$apelido','$email','$password')";
 
-  mysqli_query($mysqli, $sql);
+    $result = mysqli_query($conn, $sql);
+    if ($result && $conn->affected_rows) {
+      header('location:signin.php');
+      exit(0);
+    } else {
+      $errors['failed'] = "Não foi possivel inserir o utilizador";
+    }
+  }
 }
 ?>
 
@@ -23,7 +38,7 @@ if (isset($_POST['submit'])) {
 
 <head>
     <meta charset="utf-8" />
-    <title>DASHMIN - Bootstrap Admin Template</title>
+    <title>DASHMIN</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta content="" name="keywords" />
     <meta content="" name="description" />
@@ -72,37 +87,49 @@ if (isset($_POST['submit'])) {
                                 <h3 class="text-primary">Registar</h3>
                             </a>
                         </div>
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="floatingText" placeholder="Nome" />
-                            <label for="floatingText">Nome</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="floatingText" placeholder="Apelido" />
-                            <label for="floatingText">Apelido</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="floatingInput"
-                                placeholder="name@example.com" />
-                            <label for="floatingInput">Email address</label>
-                        </div>
-                        <div class="form-floating mb-4">
-                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password" />
-                            <label for="floatingPassword">Password</label>
-                        </div>
-                        <div class="form-floating mb-4">
-                            <input type="password" class="form-control" id="confirmPassword"
-                                placeholder="Confirmar Password" />
-                            <label for="confirmPassword">Confirmar Password</label>
-                        </div>
-                        <div class="d-flex align-items-center justify-content-between mb-4">
-                            <a href="">Perdeu a password?</a>
-                        </div>
-                        <button type="submit" class="btn btn-primary py-3 w-100 mb-4">
-                            Submeter
-                        </button>
-                        <p class="text-center mb-0">
-                            Já tens conta criada? <a href="signup.html">Inicia Sessão</a>
-                        </p>
+                        <?php if (isset($errors['failed'])) { ?>
+                        <div class="text-danger"><?= $errors['failed'] ?></div>
+                        <?php } ?>
+                        <form action="#" method="post">
+                            <div class=" form-floating mb-3">
+                                <input type="text" class="form-control" id="floatingText" name="primeiro_nome"
+                                    placeholder="Nome" value="<?= $username ?>" />
+                                <label for="floatingText">Nome</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="floatingText" name="apelido"
+                                    placeholder="Apelido" value="<?= $apelido ?>" />
+                                <label for="floatingText">Apelido</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="email" class="form-control" id="floatingInput" name="email"
+                                    placeholder="name@example.com" value="<?= $email ?>" />
+                                <label for="floatingInput">Email address</label>
+                            </div>
+                            <div class="form-floating mb-4">
+                                <input type="password" class="form-control" id="floatingPassword" name="password"
+                                    placeholder="Password" />
+                                <label for="floatingPassword">Password</label>
+                                <?php if (isset($errors['password'])) { ?>
+                                <div class=" text-danger"><?= $errors['password'] ?>
+                                </div>
+                                <?php } ?>
+                            </div>
+                            <div class="form-floating mb-4">
+                                <input type="password" class="form-control" id="confirmPassword" name="confirmPassword"
+                                    placeholder="Confirmar Password" />
+                                <label for="confirmPassword">Confirmar Password</label>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between mb-4">
+                                <a href="">Perdeu a password?</a>
+                            </div>
+                            <button type="submit" name="submit" class="btn btn-primary py-3 w-100 mb-4">
+                                Submeter
+                            </button>
+                            <p class="text-center mb-0">
+                                Já tens conta criada? <a href="signup.html">Inicia Sessão</a>
+                            </p>
+                        </form>
                     </div>
                 </div>
             </div>
