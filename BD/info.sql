@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 03-Jun-2022 às 08:49
+-- Tempo de geração: 03-Jun-2022 às 10:06
 -- Versão do servidor: 5.7.31
 -- versão do PHP: 7.3.21
 
@@ -206,12 +206,12 @@ CREATE TABLE IF NOT EXISTS `utilizador` (
   `id_utilizador` int(11) NOT NULL AUTO_INCREMENT,
   `primeiro_nome` varchar(60) NOT NULL,
   `apelido` varchar(60) NOT NULL,
-  `data_nasc` date NOT NULL,
+  `data_nasc` date DEFAULT NULL,
   `telefone` char(9) DEFAULT NULL,
   `email` varchar(100) NOT NULL,
   `pass` varchar(255) NOT NULL,
-  `genero` enum('Masculino','Feminino','Indefenido') NOT NULL,
-  `perfil` enum('formando','admin') NOT NULL DEFAULT 'formando',
+  `genero` enum('Masculino','Feminino','Indefenido') DEFAULT NULL,
+  `perfil` enum('formando','admin') DEFAULT 'formando',
   PRIMARY KEY (`id_utilizador`),
   UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
