@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 03-Jun-2022 às 10:06
+-- Tempo de geração: 06-Jun-2022 às 08:37
 -- Versão do servidor: 5.7.31
 -- versão do PHP: 7.3.21
 
@@ -214,7 +214,7 @@ CREATE TABLE IF NOT EXISTS `utilizador` (
   `perfil` enum('formando','admin') DEFAULT 'formando',
   PRIMARY KEY (`id_utilizador`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `utilizador`
