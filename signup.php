@@ -9,27 +9,34 @@ $apelido = '';
 $email = '';
 if (isset($_POST['submit'])) {
 
-  $username = $_POST['primeiro_nome'];
-  $apelido = $_POST['apelido'];
-  $email = $_POST['email'];
-  $pass =  $_POST['password'];
-  $cpass =  $_POST['confirmPassword'];
-  if ($pass != $cpass) {
-    $errors['password'] = "As passwords indicadas não são iguais";
-  }
+    $username = $_POST['primeiro_nome'];
+    $apelido = $_POST['apelido'];
+    $email = $_POST['email'];
+    $pass =  $_POST['password'];
+    $cpass =  $_POST['confirmPassword'];
 
-  if (count($errors)==0) {
-    $password = password_hash($pass, PASSWORD_DEFAULT);
-    $sql = "INSERT INTO utilizador (primeiro_nome,apelido,email,pass) VALUES('$username','$apelido','$email','$password')";
-
-    $result = mysqli_query($conn, $sql);
-    if ($result && $conn->affected_rows) {
-      header('location:signin.php');
-      exit(0);
-    } else {
-      $errors['failed'] = "Não foi possivel inserir o utilizador";
+    if (strlen($email) == 0)
+        $errors['primeiro_nome'] = 'Nome é um campo obrigatorio';
+    if (strlen($email) == 0)
+        $errors['apelido'] = 'Apelido é um campo obrigatorio';
+    if (strlen($email) == 0)
+        $errors['email'] = 'Email é um campo obrigatorio';
+    if ($pass != $cpass) {
+        $errors['password'] = "As passwords indicadas não são iguais";
     }
-  }
+
+    if (count($errors) == 0) {
+        $password = password_hash($pass, PASSWORD_DEFAULT);
+        $sql = "INSERT INTO utilizador (primeiro_nome,apelido,email,pass) VALUES('$username','$apelido','$email','$password')";
+
+        $result = mysqli_query($conn, $sql);
+        if ($result && $conn->affected_rows) {
+            header('location:signin.php');
+            exit(0);
+        } else {
+            $errors['failed'] = "Não foi possivel inserir o utilizador";
+        }
+    }
 }
 ?>
 
@@ -69,8 +76,7 @@ if (isset($_POST['submit'])) {
 <body>
     <div class="container-xxl position-relative bg-white d-flex p-0">
         <!-- Spinner Start -->
-        <div id="spinner"
-            class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
             <div class="spinner-border text-primary" style="width: 3rem; height: 3rem" role="status">
                 <span class="sr-only">Loading...</span>
             </div>
@@ -88,36 +94,43 @@ if (isset($_POST['submit'])) {
                             </a>
                         </div>
                         <?php if (isset($errors['failed'])) { ?>
-                        <div class="text-danger"><?= $errors['failed'] ?></div>
+                            <div class="text-danger"><?= $errors['failed'] ?></div>
                         <?php } ?>
                         <form action="#" method="post">
                             <div class=" form-floating mb-3">
-                                <input type="text" class="form-control" id="floatingText" name="primeiro_nome"
-                                    placeholder="Nome" value="<?= $username ?>" />
+                                <input type="text" class="form-control" id="floatingText" name="primeiro_nome" placeholder="Nome" value="<?= $username ?>" />
                                 <label for="floatingText">Nome</label>
+                                <?php if (isset($errors['primeiro_nome'])) { ?>
+                                    <div class=" text-danger"><?= $errors['primeiro_nome'] ?>
+                                    </div>
+                                <?php } ?>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="floatingText" name="apelido"
-                                    placeholder="Apelido" value="<?= $apelido ?>" />
+                                <input type="text" class="form-control" id="floatingText" name="apelido" placeholder="Apelido" value="<?= $apelido ?>" />
                                 <label for="floatingText">Apelido</label>
+                                <?php if (isset($errors['apelido'])) { ?>
+                                    <div class=" text-danger"><?= $errors['apelido'] ?>
+                                    </div>
+                                <?php } ?>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="email" class="form-control" id="floatingInput" name="email"
-                                    placeholder="name@example.com" value="<?= $email ?>" />
+                                <input type="email" class="form-control" id="floatingInput" name="email" placeholder="name@example.com" value="<?= $email ?>" />
                                 <label for="floatingInput">Email address</label>
-                            </div>
-                            <div class="form-floating mb-4">
-                                <input type="password" class="form-control" id="floatingPassword" name="password"
-                                    placeholder="Password" />
-                                <label for="floatingPassword">Password</label>
-                                <?php if (isset($errors['password'])) { ?>
-                                <div class=" text-danger"><?= $errors['password'] ?>
-                                </div>
+                                <?php if (isset($errors['email'])) { ?>
+                                    <div class=" text-danger"><?= $errors['email'] ?>
+                                    </div>
                                 <?php } ?>
                             </div>
                             <div class="form-floating mb-4">
-                                <input type="password" class="form-control" id="confirmPassword" name="confirmPassword"
-                                    placeholder="Confirmar Password" />
+                                <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password" />
+                                <label for="floatingPassword">Password</label>
+                                <?php if (isset($errors['password'])) { ?>
+                                    <div class=" text-danger"><?= $errors['password'] ?>
+                                    </div>
+                                <?php } ?>
+                            </div>
+                            <div class="form-floating mb-4">
+                                <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirmar Password" />
                                 <label for="confirmPassword">Confirmar Password</label>
                             </div>
                             <div class="d-flex align-items-center justify-content-between mb-4">
