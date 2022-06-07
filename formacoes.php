@@ -63,33 +63,7 @@
       <a href="index.html">
           <img  src="img/logo.png" alt="" width="35%" style="padding-left:10px"/>
       </a>
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-      <button
-        type="button"
-        class="navbar-toggler me-4"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarCollapse"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <div class="navbar-nav ms-auto p-4 p-lg-0">
-         
-          <a href="formacoes.php" class="nav-item nav-link">Formações</a>
-          <a href="workshops.html" class="nav-item nav-link">Workshops</a>
-          <a href="#+" class="nav-item nav-link">Candidaturas</a>
-          <a href="contacto.php" class="nav-item nav-link">Contacto</a>
-          <a href="#" class="nav-item nav-link">FAQ</a>
-        </div>
-        <a href="login.php" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block"
-          >Login<i class="fa fa-arrow-right ms-3"></i
-        ></a>
-=======
->>>>>>> 89660627213c98e7a66b1581ac7a93fe6e47748a
->>>>>>> d443584486db0b8ba937712d7472e0ac6b14d63f
-    <button
+<button
       type="button"
       class="navbar-toggler me-4"
       data-bs-toggle="collapse"
@@ -104,13 +78,7 @@
         <a href="formulario.php" class="nav-item nav-link">Candidaturas</a>
         <a href="contacto.php" class="nav-item nav-link">Contactos</a>
         <a href="faq.html" class="nav-item nav-link">FAQ</a>
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
 
-=======
->>>>>>> 89660627213c98e7a66b1581ac7a93fe6e47748a
->>>>>>> d443584486db0b8ba937712d7472e0ac6b14d63f
       </div>
       <a href="login.php" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block"
         >Login<i class="fa fa-arrow-right ms-3"></i
@@ -181,11 +149,7 @@
                         <img class="img-fluid position-absolute w-100 h-100 " src="img/cat-4.jpg" alt=""
                             style="object-fit: cover" />
                         <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3"
-<<<<<<< HEAD
-                            style="margin: 0px">
-=======
                             style="margin: 0px ">
->>>>>>> d443584486db0b8ba937712d7472e0ac6b14d63f
                             <h5 class="m-0">Educação</h5>
                             <small class="text-primary">Duas Formações</small>
                         </div>
