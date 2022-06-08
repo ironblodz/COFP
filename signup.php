@@ -15,9 +15,9 @@ if (isset($_POST['submit'])) {
     $pass =  $_POST['password'];
     $cpass =  $_POST['confirmPassword'];
 
-    if (strlen($email) == 0)
+    if (strlen($username) == 0)
         $errors['primeiro_nome'] = 'Nome é um campo obrigatorio';
-    if (strlen($email) == 0)
+    if (strlen($apelido) == 0)
         $errors['apelido'] = 'Apelido é um campo obrigatorio';
     if (strlen($email) == 0)
         $errors['email'] = 'Email é um campo obrigatorio';
