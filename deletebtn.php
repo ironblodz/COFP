@@ -1,19 +1,13 @@
 <?php
+$conn = mysqli_connect("localhost", "root", "");
+$db = mysqli_select_db($conn,'info');
 
-include "connect.php"; // Using database connection file here
-
-$id = $_GET['id']; // get id through query string
-
-$del = mysqli_query($db,"delete from formacao where id_formacao = '$id'"); // delete query
-
-if($del)
+if(isset($_POST["delete"]))
 {
-    mysqli_close($db); // Close connection
-    header("location:listaformacoes.php"); // redirects to all records page
-    exit;	
+    $id = $_POST["id_formacao"];
+
+    $query = "DELETE FROM formacao WHERE id_formacao='$id'";
+    $query_run = mysqli_query($conn,$query);
 }
-else
-{
-    echo "Error deleting record"; // display error message if not delete
-}
+
 ?>
