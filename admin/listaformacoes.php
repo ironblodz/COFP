@@ -200,6 +200,11 @@ if($result-> num_rows >0) {
                     <div class="col-12">
                         <div class="bg-light rounded h-100 p-4">
                             <h6 class="mb-4">Formações</h6>
+                            <input
+                  type="button"
+                  class="btn btn-primary btn-xs"
+                  value="Inserir novo utilizador"
+                />
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
@@ -227,7 +232,16 @@ if($result-> num_rows >0) {
                                             <td><?= $row['data_formacao'] ?></td>
                                             <td><?= $row['duracao'] ?></td>
                                             <td><?= $row['categoria'] ?></td>
-                                            <td class="text-center"><a class='btn btn-info btn-xs' href="deletebtn.php"><span class="glyphicon glyphicon-edit"></span> Edit</a> <a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Del</a></td>
+                                            <td class="text-center">
+                          <a class="btn btn-primary btn-xs" href="#"
+                            ><span class="glyphicon glyphicon-edit"></span>
+                            Edit</a
+                          >
+                          <a href="#" class="btn btn-danger btn-xs"
+                            ><span class="glyphicon glyphicon-remove"></span>
+                            Del</a
+                          >
+                        </td>
                                         </tr>
                                         
                                         <?php    }
