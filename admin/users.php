@@ -131,33 +131,6 @@ $result = $conn->query($query);
                 <a href="#" class="sidebar-toggler flex-shrink-0">
                     <i class="fa fa-bars"></i>
                 </a>
-                <hr class="dropdown-divider" />
-                <a href="#" class="dropdown-item text-center"
-                  >See all message</a
-                >
-              </div>
-            </div>
-            <div class="nav-item dropdown">
-              <a
-                href="#"
-                class="nav-link dropdown-toggle"
-                data-bs-toggle="dropdown"
-              >
-                <i class="fa fa-bell me-lg-2"></i>
-                <span class="d-none d-lg-inline-flex">Notificações</span>
-              </a>
-              <div
-                class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0"
-              >
-                <a href="#" class="dropdown-item">
-                  <h6 class="fw-normal mb-0">Perfil Atualizado</h6>
-                  <small>15 minutos atrás</small>
-                </a>
-                <hr class="dropdown-divider" />
-                <a href="#" class="dropdown-item">
-                  <h6 class="fw-normal mb-0">Novo utilizador Adicionado</h6>
-                  <small>15 minutos atrás</small>
-                </a>
                 <form class="d-none d-md-flex ms-4">
                     <input class="form-control border-0" type="search" placeholder="Search">
                 </form>
@@ -193,7 +166,7 @@ $result = $conn->query($query);
                                     <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
                                     <div class="ms-2">
                                         <h6 class="fw-normal mb-0">Jhon send you a message</h6>
-                                        <small>25 minutes ago</small>
+                                        <small>15 minutes ago</small>
                                     </div>
                                 </div>
                             </a>
@@ -253,17 +226,18 @@ $result = $conn->query($query);
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Primeiro Nome</th>
-                                        <th scope="col">Apelido</th>
-                                        <th scope="col">Data_nasc</th>
-                                        <th scope="col">Telefone</th>
-                                        <th scope="col">Email</th>
-                                        <th scope="col">Inscrito em:</th>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Primeiro Nome</th>
+                                            <th scope="col">Apelido</th>
+                                            <th scope="col">Data_nasc</th>
+                                            <th scope="col">Telefone</th>
+                                            <th scope="col">Email</th>
+                                            <th scope="col">Inscrito em:</th>
                                             <th scope="col">Ações</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    
+  <tbody>
 
 <?php
               if ($result->num_rows > 0) {
@@ -276,8 +250,7 @@ $result = $conn->query($query);
     <td><?= $row['data_nasc'] ?></td>
     <td><?= $row['telefone'] ?></td>
     <td><?= $row['email'] ?></td>
-    <td>
-      <?php 
+    <td><?php 
     $query = "SELECT nome FROM lista_inscritos where id_utilizador=".$row['id_utilizador'];
 
     $result2 = $conn->query($query);
@@ -288,16 +261,16 @@ $result = $conn->query($query);
               } else {
                   echo "-";
               }  
-    ?></td>
-    <td class="text-center">
-                          <a class="btn btn-primary btn-xs" href="#"
-                            ><span class="glyphicon glyphicon-edit"></span>
-                            Edit</a
-                          >
-                          <a href="../delete_users.php" class="btn btn-danger btn-xs"
-                            ><span class="glyphicon glyphicon-remove"></span>
-                            Del</a
-                          >
+    ?></td><td class="text-center">
+    <a class="btn btn-primary btn-xs" href="#"
+      ><span class="glyphicon glyphicon-edit"></span>
+      Edit</a
+    >
+    <a href="#" class="btn btn-danger btn-xs"
+      ><span class="glyphicon glyphicon-remove"></span>
+      Del</a
+    >
+  </td>
   </tr>
   <?php    }
               } else {
@@ -308,12 +281,13 @@ $result = $conn->query($query);
 </table>
 
 </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-           
+          
         <!-- Navbar End -->
 
 
@@ -321,7 +295,7 @@ $result = $conn->query($query);
         <!-- Footer Start -->
         <div class="container-fluid pt-4 px-4">
           <div class="bg-light rounded-top p-4">
-            <div class="row">gdr
+            <div class="row">
               <div class="col-12 col-sm-6 text-center text-sm-start">
                 &copy; <a href="#">INFO</a>, Todos os direitos Reservados.
               </div>
