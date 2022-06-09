@@ -412,20 +412,6 @@ $result = $conn->query($query);
                         </div>
                     </div>
                 </div>
-<<<<<<< HEAD
-=======
-=======
-                <hr class="dropdown-divider" />
-                <a href="#" class="dropdown-item">
-                  <h6 class="fw-normal mb-0">Password alterada</h6>
-                  <small>15 minutos atrás</small>
-                </a>
-                <hr class="dropdown-divider" />
-                <a href="#" class="dropdown-item text-center"
-                  >Ver todas as notificações</a
-                >
-              </div>
->>>>>>> fc8b3c9b596a0368d54a5438cecee5a08f455bfe:admin/users.html
             </div>
             <div class="nav-item dropdown">
               <a
@@ -548,7 +534,6 @@ $result = $conn->query($query);
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
-<<<<<<< HEAD:admin/users.php
 </body>
 
 </html>
@@ -556,7 +541,3 @@ $result = $conn->query($query);
 
 $conn->close();
 ?>
-=======
-  </body>
-</html>
->>>>>>> fc8b3c9b596a0368d54a5438cecee5a08f455bfe:admin/users.html
