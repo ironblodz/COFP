@@ -1,38 +1,3 @@
-<<<<<<< HEAD:admin/users.html
-<!--  
-<?php
-session_start();
-include("connection.php");
-
-$errors = array(); // Cleanup previous errors
-if (!empty($_POST)) {
-
-  if (isset($_POST['email'])) $email = trim($_POST['email']);
-  else $email = "";
-  if (isset($_POST['pass'])) $pass = trim($_POST['pass']);
-  else $pass = "";
-  if (strlen($email) == 0)
-    $errors['email'] = 'Email é um campo obrigatorio';
-  if (strlen($pass) == 0)
-    $errors['pass'] = 'Password é um campo obrigatorio';
-  if (count($errors) == 0) {
-    $sql = "select * from info.utilizador ";
-    $aux = 0;
-    $result = $conn->query($sql);
-    if ($result) {
-
-      $user = $result->fetch_assoc();
-      if (password_verify($pass, $user['pass'])) {
-        $aux = 1;
-      }
-    }
-   
-    }
-  }
-
-?>
--->
-=======
 <?php
 session_start();
 include "../connection.php";
@@ -42,7 +7,6 @@ $result = $conn->query($query);
 
 ?>
 
->>>>>>> 4e9c31a7619360d53fce41a4a03fd602f1f0312f:admin/users.php
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -295,7 +259,7 @@ $result = $conn->query($query);
                                     <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
                                     <div class="ms-2">
                                         <h6 class="fw-normal mb-0">Jhon send you a message</h6>
-                                        <small>15 minutes ago</small>
+                                        <small>25 minutes ago</small>
                                     </div>
                                 </div>
                             </a>
