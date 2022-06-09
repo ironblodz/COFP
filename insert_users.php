@@ -20,7 +20,7 @@ if (isset($_POST['submit'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
     $cpass = $_POST['confirmPassword'];
-    $tipo =  $_POST['perfil'];
+
 
     if (strlen($username) == 0)
         $errors['primeiro_nome'] = 'Nome é um campo obrigatorio';
@@ -32,8 +32,6 @@ if (isset($_POST['submit'])) {
         $errors['telefone'] = 'Telefone é um campo obrigatorio';
     if (strlen($email) == 0)
         $errors['email'] = 'Email é um campo obrigatorio';
-    if (strlen($tipo) == 0)
-        $errors['perfil'] = 'Perfil é um campo obrigatorio';
     if (strlen($password) < 6) {
         $errors['password'] = "A password tem de ter o minimo  de 6 caracteres";
     } elseif ($password != $cpass) {
@@ -42,7 +40,7 @@ if (isset($_POST['submit'])) {
 
     if (count($errors) == 0) {
         $password = password_hash($pass, PASSWORD_DEFAULT);
-        $sql = "INSERT INTO utilizador (primeiro_nome,apelido,data_nasc,telefone,email,perfil,pass) VALUES('$username','$apelido','$date','$tele','$email','$tipo','$password')";
+        $sql = "INSERT INTO utilizador (primeiro_nome,apelido,data_nasc,telefone,email,pass) VALUES('$username','$apelido','$date','$tele','$email','$password')";
         $result = mysqli_query($conn, $sql);
         if ($result && $conn->affected_rows) {
             header('location:admin/index.html');
@@ -151,14 +149,7 @@ if (isset($_POST['submit'])) {
                                     </div>
                                 <?php } ?>
                             </div>
-                            <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="floatingInput" name="perfil" placeholder="Perfil" value="<?= $tipo ?>" />
-                                <label for="floatingInput">Perfil</label>
-                                <?php if (isset($errors['perfil'])) { ?>
-                                    <div class=" text-danger"><?= $errors['perfil'] ?>
-                                    </div>
-                                <?php } ?>
-                            </div>
+
                             <div class="form-floating mb-4">
                                 <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password" />
                                 <label for="floatingPassword">Password</label>
