@@ -164,7 +164,7 @@ if($result-> num_rows >0) {
                             </a>
                             <hr class="dropdown-divider">
                             <a href="#" class="dropdown-item">
-                                <h6 class="fw-normal mb-0">New user added</h6>
+                                <h6 class="fw-normal mb-0">New formation added</h6>
                                 <small>15 minutes ago</small>
                             </a>
                             <hr class="dropdown-divider">
@@ -203,7 +203,7 @@ if($result-> num_rows >0) {
                             <input
                   type="button"
                   class="btn btn-primary btn-xs"
-                  value="Inserir novo utilizador"
+                  value="Inserir nova formação"
                 />
                             <div class="table-responsive">
                                 <table class="table">
