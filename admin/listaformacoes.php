@@ -200,7 +200,7 @@ if($result-> num_rows >0) {
                     <div class="col-12">
                         <div class="bg-light rounded h-100 p-4">
                             <h6 class="mb-4">Formações</h6>
-                            <a href="../insert_formacoes.php"><input type="button" class="btn btn-primary" value="Inserir formação"></a>
+                            <a href="../insert_formacoes.php"><input type="button" class="btn btn-primary" value="Inserir Formação"></a>
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
@@ -230,15 +230,14 @@ if($result-> num_rows >0) {
                                             <td><?= $row['categoria'] ?></td>
                                             
                                             <td class="text-center" nowrap>
-                          <a class="btn btn-primary btn-xs" href="#"
-                            ><span class="glyphicon glyphicon-edit"></span>
-                            Edit</a
-                          >
-                          <a href="../delete_formacoes.php" class="btn btn-danger btn-xs"
-                            ><span class="glyphicon glyphicon-remove"></span>
-                            Delete</a
-                          >
-                        </td>
+                            <a class="btn btn-primary btn-xs" href="#"><span class="glyphicon glyphicon-edit"></span>
+                              <i class="fa fa-pen"></i></a>
+                            <form action="../delete_formacoes.php" class="d-inline" method="Post" onsubmit="return confirm('Tens a certeza que queres apagar');">
+                              <input type="hidden" name="id_formacao" value="<?= $row['id_formacao'] ?>">
+                              <button class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span>
+                              <i class="fa fa-trash"></i></button>
+                            </form>
+                          </td>
                                         </tr>
                                         
                                         <?php    }
