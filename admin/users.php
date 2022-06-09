@@ -1,12 +1,36 @@
+<!--  
 <?php
 session_start();
-include "../connection.php";
-$query = "SELECT id_utilizador,primeiro_nome,apelido,data_nasc,telefone,email FROM utilizador";
+include("connection.php");
 
-$result = $conn->query($query);
+$errors = array(); // Cleanup previous errors
+if (!empty($_POST)) {
+
+  if (isset($_POST['email'])) $email = trim($_POST['email']);
+  else $email = "";
+  if (isset($_POST['pass'])) $pass = trim($_POST['pass']);
+  else $pass = "";
+  if (strlen($email) == 0)
+    $errors['email'] = 'Email é um campo obrigatorio';
+  if (strlen($pass) == 0)
+    $errors['pass'] = 'Password é um campo obrigatorio';
+  if (count($errors) == 0) {
+    $sql = "select * from info.utilizador ";
+    $aux = 0;
+    $result = $conn->query($sql);
+    if ($result) {
+
+      $user = $result->fetch_assoc();
+      if (password_verify($pass, $user['pass'])) {
+        $aux = 1;
+      }
+    }
+   
+    }
+  }
 
 ?>
-
+-->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -137,7 +161,7 @@ $result = $conn->query($query);
             <input
               class="form-control border-0"
               type="search"
-              placeholder="Search"
+              placeholder="Procurar"
             />
           </form>
           <div class="navbar-nav align-items-center ms-auto">
@@ -148,7 +172,7 @@ $result = $conn->query($query);
                 data-bs-toggle="dropdown"
               >
                 <i class="fa fa-envelope me-lg-2"></i>
-                <span class="d-none d-lg-inline-flex">Message</span>
+                <span class="d-none d-lg-inline-flex">Mensagens</span>
               </a>
               <div
                 class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0"
@@ -210,20 +234,21 @@ $result = $conn->query($query);
                 data-bs-toggle="dropdown"
               >
                 <i class="fa fa-bell me-lg-2"></i>
-                <span class="d-none d-lg-inline-flex">Notificatin</span>
+                <span class="d-none d-lg-inline-flex">Notificações</span>
               </a>
               <div
                 class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0"
               >
                 <a href="#" class="dropdown-item">
-                  <h6 class="fw-normal mb-0">Profile updated</h6>
-                  <small>15 minutes ago</small>
+                  <h6 class="fw-normal mb-0">Perfil Atualizado</h6>
+                  <small>15 minutos atrás</small>
                 </a>
                 <hr class="dropdown-divider" />
                 <a href="#" class="dropdown-item">
-                  <h6 class="fw-normal mb-0">New user added</h6>
-                  <small>15 minutes ago</small>
+                  <h6 class="fw-normal mb-0">Novo utilizador Adicionado</h6>
+                  <small>15 minutos atrás</small>
                 </a>
+<<<<<<< HEAD
                 <hr class="dropdown-divider" />
                 <a href="#" class="dropdown-item">
                   <h6 class="fw-normal mb-0">Password changed</h6>
@@ -234,6 +259,160 @@ $result = $conn->query($query);
                   >See all notifications</a
                 >
               </div>
+=======
+                <form class="d-none d-md-flex ms-4">
+                    <input class="form-control border-0" type="search" placeholder="Search">
+                </form>
+                <div class="navbar-nav align-items-center ms-auto">
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            <i class="fa fa-envelope me-lg-2"></i>
+                            <span class="d-none d-lg-inline-flex">Message</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
+                            <a href="#" class="dropdown-item">
+                                <div class="d-flex align-items-center">
+                                    <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                                    <div class="ms-2">
+                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
+                                        <small>15 minutes ago</small>
+                                    </div>
+                                </div>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item">
+                                <div class="d-flex align-items-center">
+                                    <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                                    <div class="ms-2">
+                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
+                                        <small>15 minutes ago</small>
+                                    </div>
+                                </div>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item">
+                                <div class="d-flex align-items-center">
+                                    <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                                    <div class="ms-2">
+                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
+                                        <small>15 minutes ago</small>
+                                    </div>
+                                </div>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item text-center">See all message</a>
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            <i class="fa fa-bell me-lg-2"></i>
+                            <span class="d-none d-lg-inline-flex">Notificatin</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
+                            <a href="#" class="dropdown-item">
+                                <h6 class="fw-normal mb-0">Profile updated</h6>
+                                <small>15 minutes ago</small>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item">
+                                <h6 class="fw-normal mb-0">New user added</h6>
+                                <small>15 minutes ago</small>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item">
+                                <h6 class="fw-normal mb-0">Password changed</h6>
+                                <small>15 minutes ago</small>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item text-center">See all notifications</a>
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            <img class="rounded-circle me-lg-2" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                            <span class="d-none d-lg-inline-flex">John Doe</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
+                            <a href="#" class="dropdown-item">My Profile</a>
+                            <a href="#" class="dropdown-item">Settings</a>
+                            <a href="#" class="dropdown-item">Log Out</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <!-- Navbar End -->
+
+
+            <!-- Table Start -->
+            <div class="container-fluid pt-4 px-4">
+                <div class="row g-4">
+    
+                       
+                    <div class="col-12">
+                        <div class="bg-light rounded h-100 p-4">
+                            <h6 class="mb-4">Utilizadores</h6>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Primeiro Nome</th>
+                                            <th scope="col">Apelido</th>
+                                            <th scope="col">Data_nasc</th>
+                                            <th scope="col">Telefone</th>
+                                            <th scope="col">Email</th>
+                                            <th scope="col">Inscrito em:</th>
+                                            <th scope="col">Ações</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) { ?>
+         
+    <tr>
+      <th scope="row"><?= $row['id_utilizador'] ?></th>
+      <td><?= $row['primeiro_nome'] ?></td>
+      <td><?= $row['apelido'] ?></td>
+      <td><?= $row['data_nasc'] ?></td>
+      <td><?= $row['telefone'] ?></td>
+      <td><?= $row['email'] ?></td>
+      <td>
+      <td class="text-center">
+                          <a class="btn btn-primary btn-xs" href="#"
+                            ><span class="glyphicon glyphicon-edit"></span>
+                            Edit</a
+                          >
+                          <a href="../delete_formacoes.php" class="btn btn-danger btn-xs"
+                            ><span class="glyphicon glyphicon-remove"></span>
+                            Del</a
+                          >
+                        </td><?php 
+      $query = "SELECT nome FROM lista_inscritos where id_utilizador=".$row['id_utilizador'];
+
+      $result2 = $conn->query($query);
+      if ($result2->num_rows > 0) {
+        while ($row = $result2->fetch_assoc()) { 
+          echo($row['nome'].'<br>');
+      }
+                } else {
+                    echo "-";
+                }  
+      ?></td>
+    </tr>
+    <?php    }
+                } else {
+                    echo " 0 resultados";
+                }
+
+                ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+>>>>>>> aa2dcf75f01a8458228b18b26308f9dbfcb62346
             </div>
             <div class="nav-item dropdown">
               <a
@@ -247,13 +426,12 @@ $result = $conn->query($query);
                   alt=""
                   style="width: 40px; height: 40px"
                 />
-                <span class="d-none d-lg-inline-flex">John Doe</span>
+                <span class="d-none d-lg-inline-flex">João Peres</span>
               </a>
               <div
                 class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0"
               >
-                <a href="#" class="dropdown-item">My Profile</a>
-                <a href="#" class="dropdown-item">Settings</a>
+                <a href="#" class="dropdown-item">Meu Perfil</a>
                 <a href="#" class="dropdown-item">Log Out</a>
               </div>
             </div>
@@ -261,62 +439,8 @@ $result = $conn->query($query);
         </nav>
         <!-- Navbar End -->
 
-        <!-- Table Start -->
-        <div class="container-fluid pt-4 px-4">
-          <div class="row g-4">
-            <div class="col-12">
-              <div class="bg-light rounded h-100 p-4">
-                <h6 class="mb-4">Utilizadores</h6>
-                <a href="../insert_users.php"><input
-                  type="button"
-                  class="btn btn-primary btn-xs"
-                  value="Inserir novo utilizador"
-                /></a>
-                <div class="table-responsive">
-                  <table class="table">
-                    <thead>
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Primeiro Nome</th>
-                        <th scope="col">Apelido</th>
-                        <th scope="col">Genero</th>
-                        <th scope="col">Data de nascimento</th>
-                        <th scope="col">Telefone</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Perfil</th>
-                        <th scope="col">Ações</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>John</td>
-                        <td>Doe</td>
-                        <td>Masculino</td>
-                        <td>30-07-1999</td>
-                        <td>936545612</td>
-                        <td>john@gmail.com</td>
-                        <td>Admin</td>
-                        <td class="text-center">
-                          <a class="btn btn-primary btn-xs" href="#"
-                            ><span class="glyphicon glyphicon-edit"></span>
-                            Edit</a
-                          >
-                          <a href="../delete_users.php" class="btn btn-danger btn-xs"
-                            ><span class="glyphicon glyphicon-remove"></span>
-                            Del</a
-                          >
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Table End -->
 
+       
         <!-- Footer Start -->
         <div class="container-fluid pt-4 px-4">
           <div class="bg-light rounded-top p-4">
