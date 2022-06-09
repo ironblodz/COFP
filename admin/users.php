@@ -222,6 +222,7 @@ $result = $conn->query($query);
                     <div class="col-12">
                         <div class="bg-light rounded h-100 p-4">
                             <h6 class="mb-4">Utilizadores</h6>
+                            <a href="../insert_users.php"><input type="button" class="btn btn-primary" value="Inserir utilizador"></a>
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
@@ -266,7 +267,7 @@ $result = $conn->query($query);
       ><span class="glyphicon glyphicon-edit"></span>
       Edit</a
     >
-    <a href="#" class="btn btn-danger btn-xs"
+    <a href="../delete_users.php" class="btn btn-danger btn-xs"
       ><span class="glyphicon glyphicon-remove"></span>
       Del</a
     >
