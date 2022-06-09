@@ -438,63 +438,6 @@ $result = $conn->query($query);
         </nav>
         <!-- Navbar End -->
 
-        <!-- Table Start -->
-        <div class="container-fluid pt-4 px-4">
-          <div class="row g-4">
-            <div class="col-12">
-              <div class="bg-light rounded h-100 p-4">
-                <h6 class="mb-4">Utilizadores</h6>
-                <a href="../insert_users.php"
-                  ><input
-                    type="button"
-                    class="btn btn-primary btn-xs"
-                    value="Inserir novo utilizador"
-                /></a>
-                <div class="table-responsive">
-                  <table class="table">
-                    <thead>
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Primeiro Nome</th>
-                        <th scope="col">Apelido</th>
-                        <th scope="col">Genero</th>
-                        <th scope="col">Data de nascimento</th>
-                        <th scope="col">Telefone</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Perfil</th>
-                        <th scope="col">Ações</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>John</td>
-                        <td>Doe</td>
-                        <td>Masculino</td>
-                        <td>30-07-1999</td>
-                        <td>936545612</td>
-                        <td>john@gmail.com</td>
-                        <td>Admin</td>
-                        <td class="text-center">
-                          <a class="btn btn-primary btn-xs" href="#"
-                            ><span class="glyphicon glyphicon-edit"></span>
-                            Edit</a
-                          >
-                          <a
-                            href="../delete_users.php"
-                            class="btn btn-danger btn-xs"
-                            ><span class="glyphicon glyphicon-remove"></span>
-                            Del</a
-                          >
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
->>>>>>> 66c2aa55d691de8b1383bdd54d2bbaea1985ed06
-            </div>
-            
 
        
         <!-- Footer Start -->
