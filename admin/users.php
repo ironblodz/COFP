@@ -79,7 +79,7 @@ $result = $conn->query($query);
             </div>
           </div>
           <a href="form.html" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Forms</a>
-          <a href="users.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Utilizadores</a>
+          <a href="users.php" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Utilizadores</a>
           <a href="listaformacoes.php" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Formações</a>
         </div>
       </nav>
