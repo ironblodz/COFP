@@ -1,4 +1,3 @@
-<<<<<<< HEAD:admin/users.html
 <!--  
 <?php
 session_start();
@@ -32,17 +31,6 @@ if (!empty($_POST)) {
 
 ?>
 -->
-=======
-<?php
-session_start();
-include "../connection.php";
-$query = "SELECT id_utilizador,primeiro_nome,apelido,data_nasc,telefone,email FROM utilizador";
-
-$result = $conn->query($query);
-
-?>
-
->>>>>>> 4e9c31a7619360d53fce41a4a03fd602f1f0312f:admin/users.php
 <!DOCTYPE html>
 <html lang="en">
   <head>
