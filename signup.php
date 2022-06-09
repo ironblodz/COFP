@@ -134,7 +134,7 @@ if (isset($_POST['submit'])) {
                                 <label for="confirmPassword">Confirmar Password</label>
                             </div>
                             <div class="d-flex align-items-center justify-content-between mb-4">
-                                <a href="">Perdeu a password?</a>
+                                <a href="signin.php">Voltar para o login</a>
                             </div>
                             <button type="submit" name="submit" class="btn btn-primary py-3 w-100 mb-4">
                                 Submeter
