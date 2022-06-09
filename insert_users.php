@@ -6,32 +6,40 @@ include("connection.php");
 $errors = [];
 $username = '';
 $apelido = '';
+$date = '';
+$tele = '';
 $email = '';
+$tipo = '';
+
 if (isset($_POST['submit'])) {
 
     $username = $_POST['primeiro_nome'];
     $apelido = $_POST['apelido'];
+    $date = $_POST['data_nasc'];
+    $tele = $_POST['telefone'];
     $email = $_POST['email'];
-    $pass =  $_POST['password'];
-    $cpass =  $_POST['confirmPassword'];
+    $tipo =  $_POST['perfil'];
 
     if (strlen($username) == 0)
         $errors['primeiro_nome'] = 'Nome é um campo obrigatorio';
     if (strlen($apelido) == 0)
         $errors['apelido'] = 'Apelido é um campo obrigatorio';
+    if (strlen($date) == 0)
+        $errors['data_nasc'] = 'Data de Nascimento é um campo obrigatorio';
+    if (strlen($tele) == 0)
+        $errors['telefone'] = 'Telefone é um campo obrigatorio';
     if (strlen($email) == 0)
         $errors['email'] = 'Email é um campo obrigatorio';
-    if ($pass != $cpass) {
-        $errors['password'] = "As passwords indicadas não são iguais";
-    }
+    if (strlen($tipo) == 0)
+        $errors['perfil'] = 'Perfil é um campo obrigatorio';
+
 
     if (count($errors) == 0) {
-        $password = password_hash($pass, PASSWORD_DEFAULT);
-        $sql = "INSERT INTO utilizador (primeiro_nome,apelido,email,pass) VALUES('$username','$apelido','$email','$password')";
+        $sql = "INSERT INTO utilizador (primeiro_nome,apelido,data_nasc,telefone,email,perfil) VALUES('$username','$apelido','$date','$tele',$email','$tipo')";
 
         $result = mysqli_query($conn, $sql);
         if ($result && $conn->affected_rows) {
-            header('location:signin.php');
+            header('location:admin/index.html');
             exit(0);
         } else {
             $errors['failed'] = "Não foi possivel inserir o utilizador";
@@ -90,7 +98,7 @@ if (isset($_POST['submit'])) {
                     <div class="bg-light rounded p-4 p-sm-5 my-4 mx-3">
                         <div class="d-flex align-items-center justify-content-between mb-3">
                             <a href="index.html" class="">
-                                <h3 class="text-primary">Registar</h3>
+                                <h3 class="text-primary">Inserir Utilizador</h3>
                             </a>
                         </div>
                         <?php if (isset($errors['failed'])) { ?>
@@ -114,6 +122,22 @@ if (isset($_POST['submit'])) {
                                 <?php } ?>
                             </div>
                             <div class="form-floating mb-3">
+                                <input type="date" class="form-control" id="floatingInput" name="data_nasc" placeholder="Data de nascimento" value="<?= $date ?>" />
+                                <label for="floatingInput">Data de Nascimento</label>
+                                <?php if (isset($errors['data_nasc'])) { ?>
+                                    <div class=" text-danger"><?= $errors['data_nasc'] ?>
+                                    </div>
+                                <?php } ?>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="number" class="form-control" id="floatingInput" name="telefone" placeholder="Telefone" value="<?= $tele ?>" />
+                                <label for="floatingInput">Telefone</label>
+                                <?php if (isset($errors['telefone'])) { ?>
+                                    <div class=" text-danger"><?= $errors['telefone'] ?>
+                                    </div>
+                                <?php } ?>
+                            </div>
+                            <div class="form-floating mb-3">
                                 <input type="email" class="form-control" id="floatingInput" name="email" placeholder="name@example.com" value="<?= $email ?>" />
                                 <label for="floatingInput">Email address</label>
                                 <?php if (isset($errors['email'])) { ?>
@@ -121,27 +145,20 @@ if (isset($_POST['submit'])) {
                                     </div>
                                 <?php } ?>
                             </div>
-                            <div class="form-floating mb-4">
-                                <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password" />
-                                <label for="floatingPassword">Password</label>
-                                <?php if (isset($errors['password'])) { ?>
-                                    <div class=" text-danger"><?= $errors['password'] ?>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="floatingInput" name="perfil" placeholder="Perfil" value="<?= $tipo ?>" />
+                                <label for="floatingInput">Perfil</label>
+                                <?php if (isset($errors['perfil'])) { ?>
+                                    <div class=" text-danger"><?= $errors['perfil'] ?>
                                     </div>
                                 <?php } ?>
                             </div>
-                            <div class="form-floating mb-4">
-                                <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirmar Password" />
-                                <label for="confirmPassword">Confirmar Password</label>
-                            </div>
                             <div class="d-flex align-items-center justify-content-between mb-4">
-                                <a href="">Perdeu a password?</a>
+                                <a href="admin/index.html">Voltar à dashboard</a>
                             </div>
                             <button type="submit" name="submit" class="btn btn-primary py-3 w-100 mb-4">
-                                Submeter
+                                Inserir
                             </button>
-                            <p class="text-center mb-0">
-                                Já tens conta criada? <a href="signup.html">Inicia Sessão</a>
-                            </p>
                         </form>
                     </div>
                 </div>
