@@ -1,36 +1,12 @@
-<!--  
 <?php
 session_start();
-include("connection.php");
+include "../connection.php";
+$query = "SELECT id_utilizador,primeiro_nome,apelido,data_nasc,telefone,email FROM utilizador";
 
-$errors = array(); // Cleanup previous errors
-if (!empty($_POST)) {
-
-  if (isset($_POST['email'])) $email = trim($_POST['email']);
-  else $email = "";
-  if (isset($_POST['pass'])) $pass = trim($_POST['pass']);
-  else $pass = "";
-  if (strlen($email) == 0)
-    $errors['email'] = 'Email é um campo obrigatorio';
-  if (strlen($pass) == 0)
-    $errors['pass'] = 'Password é um campo obrigatorio';
-  if (count($errors) == 0) {
-    $sql = "select * from info.utilizador ";
-    $aux = 0;
-    $result = $conn->query($sql);
-    if ($result) {
-
-      $user = $result->fetch_assoc();
-      if (password_verify($pass, $user['pass'])) {
-        $aux = 1;
-      }
-    }
-   
-    }
-  }
+$result = $conn->query($query);
 
 ?>
--->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -248,18 +224,6 @@ if (!empty($_POST)) {
                   <h6 class="fw-normal mb-0">Novo utilizador Adicionado</h6>
                   <small>15 minutos atrás</small>
                 </a>
-<<<<<<< HEAD
-                <hr class="dropdown-divider" />
-                <a href="#" class="dropdown-item">
-                  <h6 class="fw-normal mb-0">Password changed</h6>
-                  <small>15 minutes ago</small>
-                </a>
-                <hr class="dropdown-divider" />
-                <a href="#" class="dropdown-item text-center"
-                  >See all notifications</a
-                >
-              </div>
-=======
                 <form class="d-none d-md-flex ms-4">
                     <input class="form-control border-0" type="search" placeholder="Search">
                 </form>
@@ -295,7 +259,7 @@ if (!empty($_POST)) {
                                     <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
                                     <div class="ms-2">
                                         <h6 class="fw-normal mb-0">Jhon send you a message</h6>
-                                        <small>15 minutes ago</small>
+                                        <small>25 minutes ago</small>
                                     </div>
                                 </div>
                             </a>
@@ -412,7 +376,6 @@ if (!empty($_POST)) {
                         </div>
                     </div>
                 </div>
->>>>>>> aa2dcf75f01a8458228b18b26308f9dbfcb62346
             </div>
             <div class="nav-item dropdown">
               <a
