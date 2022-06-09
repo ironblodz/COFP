@@ -41,7 +41,7 @@ if (isset($_POST['submit'])) {
         }
     }
 }
-if (isset(htmlspecialchars($_GET['id_utilizador']))) {
+if (isset($_GET['id_utilizador'])) {
     $id_utilizador = $_GET['id_utilizador'];
     $sql = "Select * From utilizador where id_utilizador=$id_utilizador";
     $result = mysqli_query($conn, $sql);
