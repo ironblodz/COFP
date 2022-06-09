@@ -237,7 +237,7 @@ if($result-> num_rows >0) {
                             ><span class="glyphicon glyphicon-edit"></span>
                             Edit</a
                           >
-                          <a href="#" class="btn btn-danger btn-xs"
+                          <a href="../delete_formacoes.php" class="btn btn-danger btn-xs"
                             ><span class="glyphicon glyphicon-remove"></span>
                             Del</a
                           >
