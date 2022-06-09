@@ -13,13 +13,13 @@ $tipo = '';
 
 if (isset($_POST['submit'])) {
 
-    $username = $_POST['primeiro_nome'];
-    $apelido = $_POST['apelido'];
-    $date = $_POST['data_nasc'];
-    $tele = $_POST['telefone'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $cpass = $_POST['confirmPassword'];
+    $username = htmlspecialchars($_POST['primeiro_nome']);
+    $apelido = htmlspecialchars($_POST['apelido']);
+    $date = htmlspecialchars($_POST['data_nasc']);
+    $tele = htmlspecialchars($_POST['telefone']);
+    $email = htmlspecialchars($_POST['email']);
+    $password = htmlspecialchars($_POST['password']);
+    $cpass = htmlspecialchars($_POST['confirmPassword']);
 
 
     if (strlen($username) == 0)

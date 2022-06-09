@@ -228,7 +228,7 @@ $result = $conn->query($query);
                               }
                               ?></td>
                           <td class="text-center" nowrap>
-                            <a class="btn btn-primary btn-xs" href="#"><span class="glyphicon glyphicon-edit"></span>
+                            <a class="btn btn-primary btn-xs" href="../update_users.php?id_utilizador=<?= $row['id_utilizador'] ?>"><span class="glyphicon glyphicon-edit"></span>
                               <i class="fa fa-pen"></i></a>
                             <form action="../delete_users.php" class="d-inline" method="Post" onsubmit="return confirm('Tens a certeza que queres apagar');">
                               <input type="hidden" name="id_utilizador" value="<?= $row['id_utilizador'] ?>">
