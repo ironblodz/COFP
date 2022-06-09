@@ -1,3 +1,13 @@
+<?php
+session_start();
+include "connection.php";
+$query = "SELECT id_professor,nome,area_formacao FROM professor Limit 4";
+$result=$conn->query($query);
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -479,6 +489,9 @@
           <h1 class="mb-5">Em Destaque</h1>
         </div>
         <div class="row g-4">
+          <?php 
+          if($result && $result-> num_rows >0 ) {
+          while($row=$result->fetch_assoc()){?>
           <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
             <div class="team-item bg-light">
               <div class="overflow-hidden">
@@ -501,92 +514,12 @@
                 </div>
               </div>
               <div class="text-center p-4">
-                <h5 class="mb-0">Eduardo Caetano</h5>
-                <small>Programador</small>
+                <h5 class="mb-0"><?= $row['nome'] ?></h5>
+                <small><?= $row['area_formacao'] ?></small>
               </div>
             </div>
           </div>
-          <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-            <div class="team-item bg-light">
-              <div class="overflow-hidden">
-                <img class="img-fluid" src="img/team-2.jpg" alt="" />
-              </div>
-              <div
-                class="position-relative d-flex justify-content-center"
-                style="margin-top: -23px"
-              >
-                <div class="bg-light d-flex justify-content-center pt-2 px-1">
-                  <a class="btn btn-sm-square btn-primary mx-1" href=""
-                    ><i class="fab fa-facebook-f"></i
-                  ></a>
-                  <a class="btn btn-sm-square btn-primary mx-1" href=""
-                    ><i class="fab fa-twitter"></i
-                  ></a>
-                  <a class="btn btn-sm-square btn-primary mx-1" href=""
-                    ><i class="fab fa-instagram"></i
-                  ></a>
-                </div>
-              </div>
-              <div class="text-center p-4">
-                <h5 class="mb-0">Micaela Esteves</h5>
-                <small>Desenvolvedor web</small>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-            <div class="team-item bg-light">
-              <div class="overflow-hidden">
-                <img class="img-fluid" src="img/team-3.jpg" alt="" />
-              </div>
-              <div
-                class="position-relative d-flex justify-content-center"
-                style="margin-top: -23px"
-              >
-                <div class="bg-light d-flex justify-content-center pt-2 px-1">
-                  <a class="btn btn-sm-square btn-primary mx-1" href=""
-                    ><i class="fab fa-facebook-f"></i
-                  ></a>
-                  <a class="btn btn-sm-square btn-primary mx-1" href=""
-                    ><i class="fab fa-twitter"></i
-                  ></a>
-                  <a class="btn btn-sm-square btn-primary mx-1" href=""
-                    ><i class="fab fa-instagram"></i
-                  ></a>
-                </div>
-              </div>
-              <div class="text-center p-4">
-                <h5 class="mb-0">David Oliveira</h5>
-                <small>Designer</small>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
-            <div class="team-item bg-light">
-              <div class="overflow-hidden">
-                <img class="img-fluid" src="img/team-4.jpg" alt="" />
-              </div>
-              <div
-                class="position-relative d-flex justify-content-center"
-                style="margin-top: -23px"
-              >
-                <div class="bg-light d-flex justify-content-center pt-2 px-1">
-                  <a class="btn btn-sm-square btn-primary mx-1" href=""
-                    ><i class="fab fa-facebook-f"></i
-                  ></a>
-                  <a class="btn btn-sm-square btn-primary mx-1" href=""
-                    ><i class="fab fa-twitter"></i
-                  ></a>
-                  <a class="btn btn-sm-square btn-primary mx-1" href=""
-                    ><i class="fab fa-instagram"></i
-                  ></a>
-                </div>
-              </div>
-              <div class="text-center p-4">
-                <h5 class="mb-0">Ângela Pereira</h5>
-                <small>Programadora</small>
-              </div>
-            </div>
-          </div>
+            <?php }} ?>
         </div>
       </div>
     </div>
@@ -651,3 +584,9 @@
     <script src="js/main.js"></script>
   </body>
 </html>
+
+
+<?php
+
+$conn->close();
+?>

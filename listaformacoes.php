@@ -133,7 +133,16 @@ $result = $conn->query($query);
       <td><?= $row['data_formacao'] ?></td>
       <td><?= $row['duracao'] ?></td>
       <td><?= $row['categoria'] ?></td>
-      
+      <td class="text-center">
+                          <a class="btn btn-primary btn-xs" href="#"
+                            ><span class="glyphicon glyphicon-edit"></span>
+                            Edit</a
+                          >
+                          <a href="#" class="btn btn-danger btn-xs"
+                            ><span class="glyphicon glyphicon-remove"></span>
+                            Del</a
+                          >
+                        </td>
     </tr>
     <?php    }
                 } else {

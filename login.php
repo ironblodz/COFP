@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("ligacao.php");
+include("connection.php");
 
 $errors = array(); // Cleanup previous errors
 if (!empty($_POST)) {

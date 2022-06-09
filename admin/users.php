@@ -1,3 +1,12 @@
+<?php
+session_start();
+include "../connection.php";
+$query = "SELECT id_utilizador,primeiro_nome,apelido,data_nasc,telefone,email FROM utilizador";
+
+$result = $conn->query($query);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -195,27 +204,44 @@
                                             <th scope="col">#</th>
                                             <th scope="col">Primeiro Nome</th>
                                             <th scope="col">Apelido</th>
-                                            <th scope="col">Genero</th>
-                                            <th scope="col">Data de nascimento</th>
+                                            <th scope="col">Data_nasc</th>
                                             <th scope="col">Telefone</th>
                                             <th scope="col">Email</th>
-                                            <th scope="col">Perfil</th>
+                                            <th scope="col">Inscrito em:</th>
                                             <th scope="col">Ações</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>John</td>
-                                            <td>Doe</td>
-                                            <td>Masculino</td>
-                                            <td>30-07-1999</td>
-                                            <td>936545612</td>
-                                            <td>john@gmail.com</td>
-                                            <td>Admin</td>
-                                            <td class="text-center"><a class='btn btn-info btn-xs' href="#"><span class="glyphicon glyphicon-edit"></span> Edit</a> <a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Del</a></td>
-                                        </tr>
-                                        
+                                    <?php
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) { ?>
+         
+    <tr>
+      <th scope="row"><?= $row['id_utilizador'] ?></th>
+      <td><?= $row['primeiro_nome'] ?></td>
+      <td><?= $row['apelido'] ?></td>
+      <td><?= $row['data_nasc'] ?></td>
+      <td><?= $row['telefone'] ?></td>
+      <td><?= $row['email'] ?></td>
+      <td><?php 
+      $query = "SELECT nome FROM lista_inscritos where id_utilizador=".$row['id_utilizador'];
+
+      $result2 = $conn->query($query);
+      if ($result2->num_rows > 0) {
+        while ($row = $result2->fetch_assoc()) { 
+          echo($row['nome'].'<br>');
+      }
+                } else {
+                    echo "-";
+                }  
+      ?></td>
+    </tr>
+    <?php    }
+                } else {
+                    echo " 0 resultados";
+                }
+
+                ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -265,3 +291,7 @@
 </body>
 
 </html>
+<?php
+
+$conn->close();
+?>

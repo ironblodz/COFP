@@ -1,12 +1,8 @@
 <?php
 session_start();
 include "connection.php";
-<<<<<<< HEAD
-$query = "SELECT id_utilizador,primeiro_nome,apelido,data_nasc,telefone,email FROM utilizador ";
-=======
 $query = "SELECT id_utilizador,primeiro_nome,apelido,data_nasc,telefone,email FROM utilizador";
 
->>>>>>> d443584486db0b8ba937712d7472e0ac6b14d63f
 $result = $conn->query($query);
 
 ?>
