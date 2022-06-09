@@ -28,8 +28,8 @@ if (isset($_POST['submit'])) {
         $errors['apelido'] = 'Apelido é um campo obrigatorio';
     if (strlen($date) == 0)
         $errors['data_nasc'] = 'Data de Nascimento é um campo obrigatorio';
-    if (strlen($tele) == 0)
-        $errors['telefone'] = 'Telefone é um campo obrigatorio';
+   /* if (strlen($tele) == 0)
+        $errors['telefone'] = 'Telefone é um campo obrigatorio';*/
     if (strlen($email) == 0)
         $errors['email'] = 'Email é um campo obrigatorio';
     if (strlen($password) < 6) {
