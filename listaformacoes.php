@@ -1,11 +1,20 @@
 <?php
 session_start();
 include "connection.php";
-$query = "SELECT id_utilizador,primeiro_nome,apelido,data_nasc,telefone,email FROM utilizador";
-
+$query = "SELECT id_formacao,nome,data_formacao,duracao,descricao,categoria FROM formacao ";
 $result = $conn->query($query);
 
+
+
 ?>
+
+
+
+
+
+
+
+
 
 <!DOCTYPE html>
 
@@ -102,12 +111,11 @@ $result = $conn->query($query);
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">Primeiro Nome</th>
-      <th scope="col">Apelido</th>
-      <th scope="col">Data_nasc</th>
-      <th scope="col">Telefone</th>
-      <th scope="col">Email</th>
-      <th scope="col">Inscrito em:</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Descrição</th>
+      <th scope="col">Data da Formação</th>
+      <th scope="col">Duração</th>
+      <th scope="col">Categoria</th>
      
     </tr>
   </thead>
@@ -119,24 +127,22 @@ $result = $conn->query($query);
                     while ($row = $result->fetch_assoc()) { ?>
          
     <tr>
-      <th scope="row"><?= $row['id_utilizador'] ?></th>
-      <td><?= $row['primeiro_nome'] ?></td>
-      <td><?= $row['apelido'] ?></td>
-      <td><?= $row['data_nasc'] ?></td>
-      <td><?= $row['telefone'] ?></td>
-      <td><?= $row['email'] ?></td>
-      <td><?php 
-      $query = "SELECT nome FROM lista_inscritos where id_utilizador=".$row['id_utilizador'];
-
-      $result2 = $conn->query($query);
-      if ($result2->num_rows > 0) {
-        while ($row = $result2->fetch_assoc()) { 
-          echo($row['nome'].'<br>');
-      }
-                } else {
-                    echo "-";
-                }  
-      ?></td>
+      <th scope="row"><?= $row['id_formacao'] ?></th>
+      <td><?= $row['nome'] ?></td>
+      <td><?= $row['descricao'] ?></td>
+      <td><?= $row['data_formacao'] ?></td>
+      <td><?= $row['duracao'] ?></td>
+      <td><?= $row['categoria'] ?></td>
+      <td class="text-center">
+                          <a class="btn btn-primary btn-xs" href="#"
+                            ><span class="glyphicon glyphicon-edit"></span>
+                            Edit</a
+                          >
+                          <a href="#" class="btn btn-danger btn-xs"
+                            ><span class="glyphicon glyphicon-remove"></span>
+                            Del</a
+                          >
+                        </td>
     </tr>
     <?php    }
                 } else {
@@ -144,7 +150,12 @@ $result = $conn->query($query);
                 }
 
                 ?>
+
+
+                
 </table>
+
+
 
   </tbody>
 
@@ -176,7 +187,7 @@ $result = $conn->query($query);
                     <h4 class="text-white mb-3">Newsletter</h4>
                     <p>Se quiser receber novidades sobre as nossas formações e workshops, subscrevam </p>
                     <div class="position-relative mx-auto" style="max-width: 400px;">
-                        <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
+                        <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="text" placeholder="Your data_formacao">
                         <button type="button"
                             class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">Subscrever</button>
                     </div>
@@ -207,4 +218,5 @@ $result = $conn->query($query);
 <?php
 
 $conn->close();
+
 ?>
