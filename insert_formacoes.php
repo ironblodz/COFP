@@ -4,51 +4,44 @@ session_start();
 include("connection.php");
 
 $errors = [];
-$username = '';
-$apelido = '';
-$date = '';
-$tele = '';
-$email = '';
+$nome = '';
+$data_formacao = '';
+$duracao = '';
+$descricao = '';
+$categoria = '';
 $tipo = '';
 
 if (isset($_POST['submit'])) {
 
-    $username = $_POST['primeiro_nome'];
-    $apelido = $_POST['apelido'];
-    $date = $_POST['data_nasc'];
-    $tele = $_POST['telefone'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $cpass = $_POST['confirmPassword'];
+    $nome = $_POST['nome'];
+    $data_formacao = $_POST['data_formacao'];
+    $duracao = $_POST['duracao'];
+    $descricao = $_POST['descricaofone'];
+    $categoria = $_POST['categoria'];
     $tipo =  $_POST['perfil'];
 
-    if (strlen($username) == 0)
-        $errors['primeiro_nome'] = 'Nome é um campo obrigatorio';
-    if (strlen($apelido) == 0)
-        $errors['apelido'] = 'Apelido é um campo obrigatorio';
-    if (strlen($date) == 0)
-        $errors['data_nasc'] = 'Data de Nascimento é um campo obrigatorio';
-    if (strlen($tele) == 0)
-        $errors['telefone'] = 'Telefone é um campo obrigatorio';
-    if (strlen($email) == 0)
-        $errors['email'] = 'Email é um campo obrigatorio';
-    if (strlen($tipo) == 0)
-        $errors['perfil'] = 'Perfil é um campo obrigatorio';
-    if (strlen($password) < 6) {
-        $errors['password'] = "A password tem de ter o minimo  de 6 caracteres";
-    } elseif ($password != $cpass) {
-        $errors['password'] = "As passwords indicadas não são iguais";
+    if (strlen($nome) == 0)
+        $errors['nome'] = 'Nome é um campo obrigatorio';
+    if (strlen($data_formacao) == 0)
+        $errors['data_formacao'] = 'Data da Formação é um campo obrigatorio';
+    if (strlen($duracao) == 0)
+        $errors['duracao'] = 'Duração é um campo obrigatorio';
+    if (strlen($descricao) == 0)
+        $errors['descricao'] = 'Descrição é um campo obrigatorio';
+    if (strlen($categoria) == 0)
+        $errors['categoria'] = 'Categoria é um campo obrigatorio';
+    if (strlen($tipo) == 0) {
     }
 
     if (count($errors) == 0) {
         $password = password_hash($pass, PASSWORD_DEFAULT);
-        $sql = "INSERT INTO utilizador (primeiro_nome,apelido,data_nasc,telefone,email,perfil,pass) VALUES('$username','$apelido','$date','$tele','$email','$tipo','$password')";
+        $sql = "INSERT INTO utilizador (nome,data_formacao,duracao,descricaofone,categoria,perfil) VALUES('$nome','$data_formacao','$duracao','$descricao','$categoria','$tipo')";
         $result = mysqli_query($conn, $sql);
         if ($result && $conn->affected_rows) {
             header('location:admin/index.html');
             exit(0);
         } else {
-            $errors['failed'] = "Não foi possivel inserir o utilizador";
+            $errors['failed'] = "Não foi possivel inserir uma nova formação";
         }
     }
 }
@@ -104,7 +97,7 @@ if (isset($_POST['submit'])) {
                     <div class="bg-light rounded p-4 p-sm-5 my-4 mx-3">
                         <div class="d-flex align-items-center justify-content-between mb-3">
                             <a href="index.html" class="">
-                                <h3 class="text-primary">Inserir Utilizador</h3>
+                                <h3 class="text-primary">Inserir Formação</h3>
                             </a>
                         </div>
                         <?php if (isset($errors['failed'])) { ?>
@@ -112,67 +105,49 @@ if (isset($_POST['submit'])) {
                         <?php } ?>
                         <form action="#" method="post">
                             <div class=" form-floating mb-3">
-                                <input type="text" class="form-control" id="floatingText" name="primeiro_nome" placeholder="Nome" value="<?= $username ?>" />
+                                <input type="text" class="form-control" id="floatingText" name="nome" placeholder="Nome" value="<?= $nome ?>" />
                                 <label for="floatingText">Nome</label>
-                                <?php if (isset($errors['primeiro_nome'])) { ?>
-                                    <div class=" text-danger"><?= $errors['primeiro_nome'] ?>
+                                <?php if (isset($errors['nome'])) { ?>
+                                    <div class=" text-danger"><?= $errors['nome'] ?>
                                     </div>
                                 <?php } ?>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="floatingText" name="apelido" placeholder="Apelido" value="<?= $apelido ?>" />
-                                <label for="floatingText">Apelido</label>
-                                <?php if (isset($errors['apelido'])) { ?>
-                                    <div class=" text-danger"><?= $errors['apelido'] ?>
+                                <input type="date" class="form-control" id="floatingText" name="data_formacao" placeholder="data_formacao" value="<?= $data_formacao ?>" />
+                                <label for="floatingText">Data da Formação</label>
+                                <?php if (isset($errors['data_formacao'])) { ?>
+                                    <div class=" text-danger"><?= $errors['data_formacao'] ?>
                                     </div>
                                 <?php } ?>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="date" class="form-control" id="floatingInput" name="data_nasc" placeholder="Data de nascimento" value="<?= $date ?>" />
-                                <label for="floatingInput">Data de Nascimento</label>
-                                <?php if (isset($errors['data_nasc'])) { ?>
-                                    <div class=" text-danger"><?= $errors['data_nasc'] ?>
+                                <input type="text" class="form-control" id="floatingInput" name="duracao" placeholder="duracao" value="<?= $duracao ?>" />
+                                <label for="floatingInput">Duração</label>
+                                <?php if (isset($errors['duracao'])) { ?>
+                                    <div class=" text-danger"><?= $errors['duracao'] ?>
                                     </div>
                                 <?php } ?>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="number" class="form-control" id="floatingInput" name="telefone" placeholder="Telefone" value="<?= $tele ?>" />
-                                <label for="floatingInput">Telefone</label>
-                                <?php if (isset($errors['telefone'])) { ?>
-                                    <div class=" text-danger"><?= $errors['telefone'] ?>
+                                <input type="text" class="form-control" id="floatingInput" name="descricao" placeholder="descricao" value="<?= $descricao ?>" />
+                                <label for="floatingInput">Descrição</label>
+                                <?php if (isset($errors['descricao'])) { ?>
+                                    <div class=" text-danger"><?= $errors['descricao'] ?>
                                     </div>
                                 <?php } ?>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="email" class="form-control" id="floatingInput" name="email" placeholder="name@example.com" value="<?= $email ?>" />
-                                <label for="floatingInput">Email address</label>
-                                <?php if (isset($errors['email'])) { ?>
-                                    <div class=" text-danger"><?= $errors['email'] ?>
+                                <input type="text" class="form-control" id="floatingInput" name="categoria" placeholder="categoria" value="<?= $categoria ?>" />
+                                <label for="floatingInput">Categoria</label>
+                                <?php if (isset($errors['categoria'])) { ?>
+                                    <div class=" text-danger"><?= $errors['categoria'] ?>
                                     </div>
                                 <?php } ?>
                             </div>
-                            <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="floatingInput" name="perfil" placeholder="Perfil" value="<?= $tipo ?>" />
-                                <label for="floatingInput">Perfil</label>
-                                <?php if (isset($errors['perfil'])) { ?>
-                                    <div class=" text-danger"><?= $errors['perfil'] ?>
-                                    </div>
-                                <?php } ?>
-                            </div>
-                            <div class="form-floating mb-4">
-                                <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password" />
-                                <label for="floatingPassword">Password</label>
-                                <?php if (isset($errors['password'])) { ?>
-                                    <div class=" text-danger"><?= $errors['password'] ?>
-                                    </div>
-                                <?php } ?>
-                            </div>
-                            <div class="form-floating mb-4">
-                                <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirmar Password" />
-                                <label for="confirmPassword">Confirmar Password</label>
-                            </div>
+                           
+                            
                             <div class="d-flex align-items-center justify-content-between mb-4">
-                                <a href="admin/index.html">Voltar à dashboard</a>
+                                <a href="admin/index.html">Voltar à Dashboard</a>
                             </div>
                             <button type="submit" name="submit" class="btn btn-primary py-3 w-100 mb-4">
                                 Inserir
