@@ -163,7 +163,7 @@ if (!($result && $result->num_rows))
                             <div class="form-floating mb-3">
                                 <select class="form-select" id="floatingInput" name="categoria"  >
                                     <option <?=$categoria=='Saúde'? "selected":""?>>Saúde</option>
-                                    <option <?=$categoria=='Informática'? "selected":""?>>Informática</option>
+                                    <option <?=$categoria=='Gestão'? "selected":""?>>Gestão</option>
                                 </select>
                                 <label for="floatingInput">Categoria</label>
                                 <?php if (isset($errors['categoria'])) { ?>

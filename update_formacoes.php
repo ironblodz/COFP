@@ -22,10 +22,14 @@ if (isset($_POST['submit'])) {
    
 
 
-    if (strlen($categoria) == 0)
+    if (strlen($nome) == 0)
         $errors['nome'] = 'Nome é um campo obrigatorio';
-    if (strlen($categoria) == 0)
+    if (strlen($data_formacao) == 0)
         $errors['data_formacao'] = 'data_formacao é um campo obrigatorio';
+    if (strlen($duracao) == 0)
+        $errors['duracao'] = 'Duração é um campo obrigatorio';
+    if (strlen($descricao) == 0)
+        $errors['descricao'] = 'Descrição é um campo obrigatorio';
     if (strlen($categoria) == 0)
         $errors['categoria'] = 'categoria é um campo obrigatorio';
 
@@ -171,7 +175,7 @@ if (isset($_GET['id_formacao'])) {
                             <div class="form-floating mb-3">
                                 <select class="form-select" id="floatingInput" name="categoria"  >
                                     <option <?=$categoria=='Saúde'? "selected":""?>>Saúde</option>
-                                    <option <?=$categoria=='Informática'? "selected":""?>>Informática</option>
+                                    <option <?=$categoria=='Gestão'? "selected":""?>>Gestão</option>
                                 </select>
                                 <label for="floatingInput">Categoria</label>
                                 <?php if (isset($errors['categoria'])) { ?>
