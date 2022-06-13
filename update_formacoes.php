@@ -4,38 +4,210 @@ session_start();
 include("connection.php");
 
 $errors = [];
-$username = '';
-$apelido = '';
-$email = '';
+$nome = '';
+$data_formacao = '';
+$duracao = '';
+$descricao = '';
+$categoria = '';
+$professor = '';
+
 if (isset($_POST['submit'])) {
+    $id_formacao = htmlspecialchars($_POST['id_formacao']);
+    $nome = htmlspecialchars($_POST['nome']);
+    $data_formacao = htmlspecialchars($_POST['data_formacao']);
+    $duracao = htmlspecialchars($_POST['duracao']);
+    $descricao = htmlspecialchars($_POST['descricao']);
+    $categoria = htmlspecialchars($_POST['categoria']);
+    
+   
 
-    $username = $_POST['primeiro_nome'];
-    $apelido = $_POST['apelido'];
-    $email = $_POST['email'];
-    $pass =  $_POST['password'];
-    $cpass =  $_POST['confirmPassword'];
 
-    if (strlen($email) == 0)
-        $errors['primeiro_nome'] = 'Nome é um campo obrigatorio';
-    if (strlen($email) == 0)
-        $errors['apelido'] = 'Apelido é um campo obrigatorio';
-    if (strlen($email) == 0)
-        $errors['email'] = 'Email é um campo obrigatorio';
-    if ($pass != $cpass) {
-        $errors['password'] = "As passwords indicadas não são iguais";
-    }
+    if (strlen($categoria) == 0)
+        $errors['nome'] = 'Nome é um campo obrigatorio';
+    if (strlen($categoria) == 0)
+        $errors['data_formacao'] = 'data_formacao é um campo obrigatorio';
+    if (strlen($categoria) == 0)
+        $errors['categoria'] = 'categoria é um campo obrigatorio';
+
 
     if (count($errors) == 0) {
-        $password = password_hash($pass, PASSWORD_DEFAULT);
-        $sql = "UPDATE utilizador (primeiro_nome,apelido,email,pass) VALUES('$username','$apelido','$email','$password')";
+
+        $sql = "UPDATE  formacao set nome='$nome' ,data_formacao='$data_formacao' ,duracao='$duracao' ,descricao='$descricao',categoria='$categoria', fk_id_professor='$professor' where id_formacao=$id_formacao";
 
         $result = mysqli_query($conn, $sql);
         if ($result && $conn->affected_rows) {
-            header('location: admin/users.html');
+            header('location: admin/listaformacoes.php');
             exit(0);
         } else {
             $errors['failed'] = "Não foi possivel editar";
         }
     }
 }
+if (isset($_GET['id_formacao'])) {
+    $id_formacao = $_GET['id_formacao'];
+    $sql = "Select * From formacao where id_formacao=$id_formacao";
+    $result = mysqli_query($conn, $sql);
+    if ($result && $result->num_rows) {
+        $row = $result->fetch_assoc();
+        $id_formacao = $row['id_formacao'];
+        $nome = $row['nome'];
+        $data_formacao = $row['data_formacao'];
+        $duracao = $row['duracao'];
+        $descricao = $row['descricao'];
+        $categoria = $row['categoria'];
+    } else {
+        header('location: admin/listaformacoes.php');
+        exit(0);
+    }
+}else{
+    header('location: admin/listaformacoes.php');
+    exit(0);
+}
 ?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>DASHMIN</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="keywords" />
+    <meta content="" name="description" />
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon" />
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="container-xxl position-relative bg-white d-flex p-0">
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+
+        <!-- Sign Up Start -->
+        <div class="container-fluid">
+            <div class="row h-100 align-items-center justify-content-center" style="min-height: 100vh">
+                <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
+                    <div class="bg-light rounded p-4 p-sm-5 my-4 mx-3">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <a href="index.html" class="">
+                                <h3 class="text-primary">Editar Formação</h3>
+                            </a>
+                        </div>
+                        <?php if (isset($errors['failed'])) { ?>
+                            <div class="text-danger"><?= $errors['failed'] ?></div>
+                        <?php } ?>
+                        <form action="#" method="post">
+                        <input type="hidden" name="id_formacao" value="<?= $id_formacao?>">
+                            <div class=" form-floating mb-3">
+                                <input type="text" class="form-control" id="floatingText" name="nome" placeholder="Nome" value="<?= $nome ?>" />
+                                <label for="floatingText">Nome</label>
+                                <?php if (isset($errors['nome'])) { ?>Editar
+                                    <div class=" text-danger"><?= $errors['nome'] ?>
+                                    </div>
+                                <?php } ?>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="date" class="form-control" id="floatingText" name="data_formacao" placeholder="data_formacao" value="<?= $data_formacao ?>" />
+                                <label for="floatingText">Data da Formação</label>
+                                <?php if (isset($errors['data_formacao'])) { ?>
+                                    <div class=" text-danger"><?= $errors['data_formacao'] ?>
+                                    </div>
+                                <?php } ?>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <select class="form-select" id="inputProf" name="professor" >
+                                    <?php while($row=$result->fetch_assoc()){?>
+                                        <option value="<?=$row['id_professor']?>"  
+                                           <?=$row['id_professor']==$professor?"selected":""?>
+                                        ><?=$row['nome']?></option>
+                                    <?php }?>
+                                </select>
+                                <label for="inputProf">Professor</label>
+                                <?php if (isset($errors['data_formacao'])) { ?>
+                                    <div class=" text-danger"><?= $errors['data_formacao'] ?>
+                                    </div>
+                                <?php } ?>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="floatingInput" name="duracao" placeholder="duracao" value="<?= $duracao ?>" />
+                                <label for="floatingInput">Duração</label>
+                                <?php if (isset($errors['duracao'])) { ?>
+                                    <div class=" text-danger"><?= $errors['duracao'] ?>
+                                    </div>
+                                <?php } ?>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="floatingInput" name="descricao" placeholder="descricao" value="<?= $descricao ?>" />
+                                <label for="floatingInput">Descrição</label>
+                                <?php if (isset($errors['descricao'])) { ?>
+                                    <div class=" text-danger"><?= $errors['descricao'] ?>
+                                    </div>
+                                <?php } ?>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <select class="form-select" id="floatingInput" name="categoria"  >
+                                    <option <?=$categoria=='Saúde'? "selected":""?>>Saúde</option>
+                                    <option <?=$categoria=='Informática'? "selected":""?>>Informática</option>
+                                </select>
+                                <label for="floatingInput">Categoria</label>
+                                <?php if (isset($errors['categoria'])) { ?>
+                                    <div class=" text-danger"><?= $errors['categoria'] ?>
+                                    </div>
+                                <?php } ?>
+                            </div>
+                           
+                            
+                            <div class="d-flex align-items-center justify-content-between mb-4">
+                                <a href="admin/index.html">Voltar à Dashboard</a>
+                            </div>
+                            <button type="submit" name="submit" class="btn btn-primary py-3 w-100 mb-4">
+                                Editar
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Sign Up End -->
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/chart/chart.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>

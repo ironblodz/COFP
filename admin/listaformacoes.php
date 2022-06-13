@@ -230,7 +230,7 @@ if($result-> num_rows >0) {
                                             <td><?= $row['categoria'] ?></td>
                                             
                                             <td class="text-center" nowrap>
-                            <a class="btn btn-primary btn-xs" href="#"><span class="glyphicon glyphicon-edit"></span>
+                            <a class="btn btn-primary btn-xs" href="../update_formacoes.php?id_formacao=<?= $row['id_formacao'] ?>"><span class="glyphicon glyphicon-edit"></span>
                               <i class="fa fa-pen"></i></a>
                             <form action="../delete_formacoes.php" class="d-inline" method="Post" onsubmit="return confirm('Tens a certeza que queres apagar');">
                               <input type="hidden" name="id_formacao" value="<?= $row['id_formacao'] ?>">

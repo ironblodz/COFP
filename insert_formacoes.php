@@ -9,16 +9,17 @@ $data_formacao = '';
 $duracao = '';
 $descricao = '';
 $categoria = '';
-$tipo = '';
+$professor = '';
+
 
 if (isset($_POST['submit'])) {
 
     $nome = $_POST['nome'];
     $data_formacao = $_POST['data_formacao'];
     $duracao = $_POST['duracao'];
-    $descricao = $_POST['descricaofone'];
+    $descricao = $_POST['descricao'];
     $categoria = $_POST['categoria'];
-    $tipo =  $_POST['perfil'];
+    $professor = $_POST['professor'];
 
     if (strlen($nome) == 0)
         $errors['nome'] = 'Nome é um campo obrigatorio';
@@ -30,20 +31,29 @@ if (isset($_POST['submit'])) {
         $errors['descricao'] = 'Descrição é um campo obrigatorio';
     if (strlen($categoria) == 0)
         $errors['categoria'] = 'Categoria é um campo obrigatorio';
-    if (strlen($tipo) == 0) {
+     {
     }
 
     if (count($errors) == 0) {
-        $password = password_hash($pass, PASSWORD_DEFAULT);
-        $sql = "INSERT INTO utilizador (nome,data_formacao,duracao,descricaofone,categoria,perfil) VALUES('$nome','$data_formacao','$duracao','$descricao','$categoria','$tipo')";
+        $sql = "INSERT INTO formacao (nome,data_formacao,duracao,descricao,categoria,fk_id_professor) VALUES('$nome','$data_formacao','$duracao','$descricao','$categoria','$professor')";
+
         $result = mysqli_query($conn, $sql);
         if ($result && $conn->affected_rows) {
-            header('location:admin/index.html');
+            header('location:admin/listaformacoes.php');
             exit(0);
         } else {
             $errors['failed'] = "Não foi possivel inserir uma nova formação";
         }
     }
+    
+}
+$sql = "select * from professor";
+$result = mysqli_query($conn, $sql);
+if (!($result && $result->num_rows)) 
+{
+    header('location:admin/listaformacoes.php');
+    exit(0);
+
 }
 ?>
 
@@ -121,6 +131,20 @@ if (isset($_POST['submit'])) {
                                 <?php } ?>
                             </div>
                             <div class="form-floating mb-3">
+                                <select class="form-select" id="inputProf" name="professor" >
+                                    <?php while($row=$result->fetch_assoc()){?>
+                                        <option value="<?=$row['id_professor']?>"  
+                                           <?=$row['id_professor']==$professor?"selected":""?>
+                                        ><?=$row['nome']?></option>
+                                    <?php }?>
+                                </select>
+                                <label for="inputProf">Professor</label>
+                                <?php if (isset($errors['data_formacao'])) { ?>
+                                    <div class=" text-danger"><?= $errors['data_formacao'] ?>
+                                    </div>
+                                <?php } ?>
+                            </div>
+                            <div class="form-floating mb-3">
                                 <input type="text" class="form-control" id="floatingInput" name="duracao" placeholder="duracao" value="<?= $duracao ?>" />
                                 <label for="floatingInput">Duração</label>
                                 <?php if (isset($errors['duracao'])) { ?>
@@ -137,7 +161,10 @@ if (isset($_POST['submit'])) {
                                 <?php } ?>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="floatingInput" name="categoria" placeholder="categoria" value="<?= $categoria ?>" />
+                                <select class="form-select" id="floatingInput" name="categoria"  >
+                                    <option <?=$categoria=='Saúde'? "selected":""?>>Saúde</option>
+                                    <option <?=$categoria=='Informática'? "selected":""?>>Informática</option>
+                                </select>
                                 <label for="floatingInput">Categoria</label>
                                 <?php if (isset($errors['categoria'])) { ?>
                                     <div class=" text-danger"><?= $errors['categoria'] ?>
