@@ -200,8 +200,8 @@ if($result-> num_rows >0) {
                        
                     <div class="col-12">
                         <div class="bg-light rounded h-100 p-4">
-                            <h6 class="mb-4">Formações</h6>
-                            <a href="../insert_formacoes.php"><input type="button" class="btn btn-primary" value="Inserir Formação"></a>
+                            <h6 class="mb-4">Professores</h6>
+                            <a href="../insert_professor.php"><input type="button" class="btn btn-primary" value="Inserir Professor"></a>
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>

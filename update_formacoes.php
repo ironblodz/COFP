@@ -18,7 +18,7 @@ if (isset($_POST['submit'])) {
     $duracao = htmlspecialchars($_POST['duracao']);
     $descricao = htmlspecialchars($_POST['descricao']);
     $categoria = htmlspecialchars($_POST['categoria']);
-    
+    $professor = htmlspecialchars($_POST['professor']);
    
 
 
@@ -37,6 +37,7 @@ if (isset($_POST['submit'])) {
     if (count($errors) == 0) {
 
         $sql = "UPDATE  formacao set nome='$nome' ,data_formacao='$data_formacao' ,duracao='$duracao' ,descricao='$descricao',categoria='$categoria', fk_id_professor='$professor' where id_formacao=$id_formacao";
+        
 
         $result = mysqli_query($conn, $sql);
         if ($result && $conn->affected_rows) {
@@ -50,6 +51,8 @@ if (isset($_POST['submit'])) {
 if (isset($_GET['id_formacao'])) {
     $id_formacao = $_GET['id_formacao'];
     $sql = "Select * From formacao where id_formacao=$id_formacao";
+    $sql2 = "select * from professor";
+    $resultProf = mysqli_query($conn, $sql2);
     $result = mysqli_query($conn, $sql);
     if ($result && $result->num_rows) {
         $row = $result->fetch_assoc();
@@ -59,6 +62,7 @@ if (isset($_GET['id_formacao'])) {
         $duracao = $row['duracao'];
         $descricao = $row['descricao'];
         $categoria = $row['categoria'];
+
     } else {
         header('location: admin/listaformacoes.php');
         exit(0);
@@ -144,7 +148,7 @@ if (isset($_GET['id_formacao'])) {
                             </div>
                             <div class="form-floating mb-3">
                                 <select class="form-select" id="inputProf" name="professor" >
-                                    <?php while($row=$result->fetch_assoc()){?>
+                                    <?php while($row=$resultProf->fetch_assoc()){?>
                                         <option value="<?=$row['id_professor']?>"  
                                            <?=$row['id_professor']==$professor?"selected":""?>
                                         ><?=$row['nome']?></option>

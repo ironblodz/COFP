@@ -14,7 +14,6 @@ $area_formacao = '';
 $telefone = '';
 
 if (isset($_POST['submit'])) {
-    $id_professor = htmlspecialchars($_POST['id_professor']);
     $nome = htmlspecialchars($_POST['nome']);
     $date = htmlspecialchars($_POST['data_nasc']);
     $email = htmlspecialchars($_POST['email']);
@@ -38,13 +37,13 @@ if (isset($_POST['submit'])) {
     if (strlen($telefone) == 0)
         $errors['telefone'] = 'Telefone é um campo obrigatorio';
   
-    }
+    
 
     if (count($errors) == 0) {
         $sql = "INSERT INTO professor (nome,data_nasc,email,genero,habilitacao,morada,area_formacao,telefone) VALUES('$nome','$date','$email','$genero','$habilitacao','$morada','$area_formacao','$telefone')";
         $result = mysqli_query($conn, $sql);
         if ($result && $conn->affected_rows) {
-            header('location:admin/index.html');
+            header('location:admin/professores.php');
             exit(0);
         } else {
             $errors['failed'] = "Não foi possivel inserir o professor";
@@ -118,14 +117,7 @@ if (isset($_POST['submit'])) {
                                     </div>
                                 <?php } ?>
                             </div>
-                            <div class="form-floating mb-3">
-                                <input type="date" class="form-control" id="floatingInput" name="data_nasc" placeholder="Data de nascimento" value="<?= $date ?>" />
-                                <label for="floatingInput">Data de Nascimento</label>
-                                <?php if (isset($errors['data_nasc'])) { ?>
-                                    <div class=" text-danger"><?= $errors['data_nasc'] ?>
-                                    </div>
-                                <?php } ?>
-                            </div>
+                    
                             <div class="form-floating mb-3">
                                 <input type="date" class="form-control" id="floatingInput" name="data_nasc" placeholder="Data de nascimento" value="<?= $date ?>" />
                                 <label for="floatingInput">Data de Nascimento</label>
@@ -143,8 +135,13 @@ if (isset($_POST['submit'])) {
                                 <?php } ?>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="genero" class="form-control" id="floatingInput" name="genero" placeholder="F,M,O" value="<?= $genero ?>" />
-                                <label for="floatingInput">Genero</label>
+ 
+                                    <select name="genero" id="id_genero" class="form-select">
+                                        <option  <?= $genero=='Feminino' ? 'selected' :'' ?>>Feminino</option>
+                                        <option  <?= $genero=='Masculino' ? 'selected' :'' ?>>Masculino</option>
+                                        <option  <?= $genero=='Indefenido' ? 'selected' :'' ?>>Indefenido</option>
+                                    </select>
+                                    <label for="floatingInput">Género</label>
                                 <?php if (isset($errors['genero'])) { ?>
                                     <div class=" text-danger"><?= $errors['genero'] ?>
                                     </div>
@@ -152,8 +149,13 @@ if (isset($_POST['submit'])) {
                             </div>
 
                             <div class="form-floating mb-3">
-                                <input type="habilitacao" class="form-control" id="floatingInput" name="habilitacao" placeholder="Habilitaçao" value="<?= $habilitacao ?>" />
-                                <label for="floatingInput">Habilitaçao</label>
+                               
+                                    <select name="habilitacao" id="id_habilitacao" class="form-select">
+                                        <option  <?= $habilitacao=='Licenciatura' ? 'selected' :'' ?>>Licenciatura</option>
+                                        <option  <?= $habilitacao=='Mestrado' ? 'selected' :'' ?>>Mestrado</option>
+                                        <option  <?= $habilitacao=='Doutoramento' ? 'selected' :'' ?>>Doutoramento</option>
+                                    </select>
+                                    <label for="floatingInput">Habilitação</label>
                                 <?php if (isset($errors['habilitacao'])) { ?>
                                     <div class=" text-danger"><?= $errors['habilitacao'] ?>
                                     </div>
@@ -161,7 +163,7 @@ if (isset($_POST['submit'])) {
                             </div>
                         
                             <div class="form-floating mb-3">
-                                <input type="morada" class="form-control" id="floatingInput" name="Morada" placeholder="morada" value="<?= $morada ?>" />
+                                <input type="morada" class="form-control" id="floatingInput" name="morada" placeholder="morada" value="<?= $morada ?>" />
                                 <label for="floatingInput">Morada</label>
                                 <?php if (isset($errors['morada'])) { ?>
                                     <div class=" text-danger"><?= $errors['morada'] ?>
@@ -170,8 +172,13 @@ if (isset($_POST['submit'])) {
                             </div>
 
                             <div class="form-floating mb-3">
-                                <input type="area_formacao" class="form-control" id="floatingInput" name="Area de Formação" placeholder="area_formacao" value="<?= $area_formacao ?>" />
-                                <label for="floatingInput">Area de Formação</label>
+                            <select name="area_formacao" id="id_area_formacao" class="form-select">
+                                        <option  <?= $area_formacao=='Imformática' ? 'selected' :'' ?>>Informática</option>
+                                        <option  <?= $area_formacao=='Gestão' ? 'selected' :'' ?>>Gestão</option>
+                                        <option  <?= $area_formacao=='Saúde' ? 'selected' :'' ?>>Saúde</option>
+                                        <option  <?= $area_formacao=='Educação' ? 'selected' :'' ?>>Educação</option>
+                                    </select>
+                                    <label for="floatingInput">Área de Formação</label>
                                 <?php if (isset($errors['area_formacao'])) { ?>
                                     <div class=" text-danger"><?= $errors['area_formacao'] ?>
                                     </div>
@@ -179,7 +186,7 @@ if (isset($_POST['submit'])) {
                             </div>
 
                             <div class="form-floating mb-3">
-                                <input type="telefone" class="form-control" id="floatingInput" name="Telefone" placeholder="telefone" value="<?= $telefone ?>" />
+                                <input type="telefone" class="form-control" id="floatingInput" name="telefone" placeholder="telefone" value="<?= $telefone ?>" />
                                 <label for="floatingInput">Telefone</label>
                                 <?php if (isset($errors['telefone'])) { ?>
                                     <div class=" text-danger"><?= $errors['telefone'] ?>
