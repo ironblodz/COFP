@@ -152,7 +152,7 @@ $result = $conn->query($query);
                 <div class="col-lg-3 col-md-6">
                 <h4 class="text-white mb-3">Principais</h4>
             <a class="btn btn-link" href="index.php">Página Inicial</a>
-            <a class="btn btn-link" href="contacto.php">Contactos</a>
+            <a class="btn btn-link" href="contato.php">Contactos</a>
             <a class="btn btn-link" href="signin.php">Login</a>
                 </div>
                 <div class="col-lg-3 col-md-6">

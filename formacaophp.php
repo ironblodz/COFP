@@ -66,7 +66,7 @@ if($result-> num_rows >0) {
         <a href="formacoes.php" class="nav-item nav-link">Formações</a>
 
 
-        <a href="contacto.html" class="nav-item nav-link">Contactos</a>
+        <a href="contacto.html" class="nav-item nav-link">Contatos</a>
 
       </div>
       <a href="signin.php" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block"

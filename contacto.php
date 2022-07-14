@@ -69,7 +69,7 @@ if($result-> num_rows >0) {
             <div class="navbar-nav ms-auto p-4 p-lg-0">
                 <a href="formacoes.php" class="nav-item nav-link">Formações</a>
 
-                <a href="contacto.php" class="nav-item nav-link">Contactos</a>
+                <a href="contacto.php" class="nav-item nav-link">Contatos</a>
 
             </div>
             <a href="signin.php" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Login<i
@@ -79,31 +79,17 @@ if($result-> num_rows >0) {
     <!-- Navbar End -->
 
 
-    <!-- Header Start -->
-    <div class="container-fluid bg-primary py-5 mb-5 page-header">
-        <div class="container py-5">
-            <div class="row justify-content-center">
-                <div class="col-lg-10 text-center">
-                    <h1 class="display-3 text-white animated slideInDown">Contacto</h1>
-
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Header End -->
-
 
     <!-- Contact Start -->
     <div class="container-xxl py-5">
         <div class="container">
             <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                <h6 class="section-title bg-white text-center text-primary px-3">Contacto-nos</h6>
-                <h1 class="mb-5">Contato Para Qualquer Dúvida</h1>
+                <h6 class="section-title bg-white text-center text-primary px-3">Contato-nos</h6>
+                <h1 class="mb-5"> Para Qualquer Dúvida</h1>
             </div>
             <div class="row g-4">
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <h5>Entrar em contato</h5>
-                    <p class="mb-4">Caso tenha alguma dúvida, não hesite em contactar</a>.</p>
+                   
                     <div class="d-flex align-items-center mb-3">
                         <div class="d-flex align-items-center justify-content-center flex-shrink-0 bg-primary"
                             style="width: 50px; height: 50px;">

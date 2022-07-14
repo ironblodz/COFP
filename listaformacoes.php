@@ -79,7 +79,7 @@ $result = $conn->query($query);
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <div class="navbar-nav ms-auto p-4 p-lg-0">
         <a href="formacoes.php" class="nav-item nav-link">Formações</a>
-        <a href="contacto.php" class="nav-item nav-link">Contactos</a>
+        <a href="contato.php" class="nav-item nav-link">Contactos</a>
       </div>
       <a href="signin.php" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block"
         >Login<i class="fa fa-arrow-right ms-3"></i
