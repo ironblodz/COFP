@@ -140,7 +140,7 @@ if (isset($_POST['submit'])) {
                                 Submeter
                             </button>
                             <p class="text-center mb-0">
-                                Já tens conta criada? <a href="signup.html">Inicia Sessão</a>
+                                Já tens conta criada? <a href="signin.php">Inicia Sessão</a>
                             </p>
                         </form>
                     </div>

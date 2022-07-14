@@ -58,7 +58,7 @@ if($result-> num_rows >0) {
 
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
-      <a href="index.html">
+    <a href="index.php">
           <img  src="img/logo.png" alt="" width="35%" style="padding-left:10px"/>
       </a>
     <button
@@ -75,38 +75,12 @@ if($result-> num_rows >0) {
         <a href="workshops.php" class="nav-item nav-link">Workshops online</a>
         <a href="formulario.php" class="nav-item nav-link">Candidaturas</a>
         <a href="contacto.php" class="nav-item nav-link">Contactos</a>
-<<<<<<< HEAD
         <a href="faq.php" class="nav-item nav-link">FAQ</a>
-=======
-        <a href="faq.html" class="nav-item nav-link">FAQ</a>
->>>>>>> d443584486db0b8ba937712d7472e0ac6b14d63f
       </div>
-      <a href="login.php" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block"
+      <a href="signin.php" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block"
         >Login<i class="fa fa-arrow-right ms-3"></i
       ></a>
     </div>
-<<<<<<< HEAD
-  </nav> <a href="index.html">
-            <img src="img/logo.png" alt="" width="35%" style="padding-left:10px" />
-        </a>
-        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <a href="formacoes.php" class="nav-item nav-link">Formações</a>
-                <a href="workshops.php" class="nav-item nav-link">Workshops online</a>
-                <a href="formulario.php" class="nav-item nav-link">Candidaturas</a>
-                <a href="contacto.php" class="nav-item nav-link">Contactos</a>
-                <a href="faq.php" class="nav-item nav-link">FAQ</a>
-            </div>
-            <a href="login.php" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Login<i
-                    class="fa fa-arrow-right ms-3"></i></a>
-        </div>
-    </nav>
-=======
-  </nav>
->>>>>>> d443584486db0b8ba937712d7472e0ac6b14d63f
     <!-- Navbar End -->
 
 

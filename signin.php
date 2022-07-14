@@ -85,7 +85,6 @@ if (!empty($_POST)) {
                 <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
                     <div class="bg-light rounded p-4 p-sm-5 my-4 mx-3">
                         <div class="d-flex align-items-center justify-content-between mb-3">
-                            <a href="index.html" class="">
                                 <h3 class="text-primary">Login</h3>
                             </a>
                         </div>
@@ -114,13 +113,16 @@ if (!empty($_POST)) {
                             </div>
                             <div class="d-flex align-items-center justify-content-between mb-4">
                                 <a href="">Perdeu a password?</a>
+                                
                             </div>
+                            <a href="index.php" class=""><p>Voltar ao website</p>
                             <button type="submit" class="btn btn-primary py-3 w-100 mb-4">
                                 Entrar
                             </button>
                             <p class="text-center mb-0">
                                 Não tens conta?<a href="signup.php"> Regista-te</a>
                             </p>
+                            
                         </form>
                     </div>
                 </div>

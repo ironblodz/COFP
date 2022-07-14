@@ -49,7 +49,7 @@ if($result-> num_rows >0) {
 
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
-    <a href="index.html">
+    <a href="index.php">
         <img  src="img/logo.png" alt="" width="35%" style="padding-left:10px"/>
     </a>
     <button
@@ -69,7 +69,7 @@ if($result-> num_rows >0) {
         <a href="contacto.html" class="nav-item nav-link">Contactos</a>
         <a href="faq.html" class="nav-item nav-link">FAQ</a>
       </div>
-      <a href="login.html" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block"
+      <a href="signin.php" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block"
         >Login<i class="fa fa-arrow-right ms-3"></i
       ></a>
     </div>

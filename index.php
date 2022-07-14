@@ -67,7 +67,7 @@ $result=$conn->query($query);
 
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
-      <a href="index.html">
+      <a href="index.php">
           <img  src="img/logo.png" alt="" width="35%" style="padding-left:10px"/>
       </a>
     <button
