@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 06-Jun-2022 às 08:37
+-- Tempo de geração: 14-Jul-2022 às 13:25
 -- Versão do servidor: 5.7.31
 -- versão do PHP: 7.3.21
 
@@ -182,7 +182,7 @@ INSERT INTO `professor` (`id_professor`, `nome`, `data_nasc`, `email`, `genero`,
 (2, 'Joseph Luís Marques\r\n', '1980-02-05', 'Joseph.Marques@sapo.pt', 'Indefenido', 'Doutoramento', 'Liége ,Rua Joseph Vrindts 620', 'Informática', ''),
 (3, 'Rui Pedro Runa Costa', '2001-12-13', 'ruirunacosta@gmail.com', 'Masculino', 'Doutoramento', 'Rua Joaquim Torrado nº6', 'Educação Sexual', '919106676'),
 (4, 'Alfredo Soares Conceição', '1969-04-15', 'soarescenceiçao56@gmail.com', 'Masculino', 'Mestrado', 'Lisboa,mosteiro da batalha', 'Educação, Historia da nossa nação portuguesa, aprender como os moros expulsarão os marroquinos do nosso povo.\r\n', '390457864'),
-(5, 'Josh Joshua Smith Williams', '1975-12-25', 'brithish420@hotmail.com', 'Masculino', 'Licenciatura', 'Live right next to the queen Elizabeth the III', 'Im here to each you swines how to speak the master language across the globle,will teach you the english lexicon', '112445778');
+(5, 'Josh Joshua Smith Williams', '1975-12-25', 'brithish420@hotmail.com', 'Masculino', 'Licenciatura', 'Live right next to the queen Elizabeth the III', 'Informática', '112445778');
 
 -- --------------------------------------------------------
 
@@ -214,21 +214,23 @@ CREATE TABLE IF NOT EXISTS `utilizador` (
   `perfil` enum('formando','admin') DEFAULT 'formando',
   PRIMARY KEY (`id_utilizador`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `utilizador`
 --
 
 INSERT INTO `utilizador` (`id_utilizador`, `primeiro_nome`, `apelido`, `data_nasc`, `telefone`, `email`, `pass`, `genero`, `perfil`) VALUES
-(1, 'Rodrigo', 'Rodrigues', '2002-02-12', '916459879', 'rod.rodrigues2002dez@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'Masculino', 'admin'),
 (2, 'Alexandre', 'Silva', '2002-02-12', '', 'alexandreosilva@outlook.pt', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'Masculino', 'admin'),
 (3, 'Rui', 'Costa', '2002-02-12', '912345678', 'ruirunacosta@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'Masculino', 'admin'),
 (4, 'Jhonny', 'Sins', '1978-12-31', '919578945', 'jhonny.bigsins@gmail.com', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'Masculino', 'formando'),
 (5, 'Lana', 'Rhoades', '1996-09-06', '919578946', 'Lana.Rhoades@gmail.com', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'Feminino', 'formando'),
 (6, 'Lee', 'Faker', '1996-05-07', '123456789', 'demonking@gmail.com', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'Masculino', 'formando'),
 (7, 'Abda', 'Ghail', '1976-01-31', '919578948', 'Abda.bigsins@gmail.com', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', 'Feminino', 'formando'),
-(8, 'Rua Miguel Torga', 'Escola', '2021-05-04', '912321456', 'INFOhelp@gmail.com', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'Indefenido', 'formando');
+(8, 'Rua Miguel Torga', 'Escola', '2021-05-04', '912321456', 'INFOhelp@gmail.com', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'Indefenido', 'formando'),
+(10, 'ruben', 'reis', '2000-08-09', '916459879', 'ruben.reis@gmail.pt', '$2y$10$h4AA8FJqUC5.RxxCvXsgPes3hHrHFcgxClOTGhpypmv0IBac5A6Da', NULL, 'formando'),
+(18, 'joao', 'peres', NULL, NULL, 'ola@gmail.com', '$2y$10$1ZOK33I7aLdR.Tzu/iemjuMPVQGKeS.GCNndaVsnPPrjDQRaNyFJG', NULL, 'formando'),
+(19, 'alexandre', 'silva', NULL, NULL, 'alexandreilva@outlook.pt', '$2y$10$VKwz20XHlNAYNSAeU8jfV.D.V8kMR3l1mki0QzaH/fY/zUaKugZOG', NULL, 'formando');
 
 -- --------------------------------------------------------
 

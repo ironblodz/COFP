@@ -72,7 +72,7 @@ $result = $conn->query($query);
   <div class="container-fluid p-0 mb-5">
     <div class="owl-carousel header-carousel position-relative">
       <div class="owl-carousel-item position-relative">
-        <img class="img-fluid" src="img/carousel-1.jpg" alt="" />
+        <img class="img-fluid" src="https://images.pexels.com/photos/247839/pexels-photo-247839.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" />
         <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(24, 29, 56, 0.7)">
           <div class="container">
             <div class="row justify-content-start">
@@ -301,12 +301,10 @@ $result = $conn->query($query);
       <div class="container py-5">
         <div class="row g-5">
           <div class="col-lg-3 col-md-6">
-            <h4 class="text-white mb-3">Formações</h4>
-            <a class="btn btn-link" href="">Workshops Online</a>
-            <a class="btn btn-link" href="">Candidaturas</a>
-            <a class="btn btn-link" href="">Contactos</a>
-            <a class="btn btn-link" href="">FAQ</a>
-            <a class="btn btn-link" href="">Login</a>
+            <h4 class="text-white mb-3">Principais</h4>
+            <a class="btn btn-link" href="index.php">Página Inicial</a>
+            <a class="btn btn-link" href="contacto.php">Contactos</a>
+            <a class="btn btn-link" href="signin.php">Login</a>
           </div>
           <div class="col-lg-3 col-md-6">
             <h4 class="text-white mb-3">Contacto</h4>

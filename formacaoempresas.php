@@ -232,12 +232,10 @@ if($result-> num_rows >0) {
         <div class="container py-5">
             <div class="row g-5">
                 <div class="col-lg-3 col-md-6">
-                    <h4 class="text-white mb-3">Links Rápidos</h4>
-                    <a class="btn btn-link" href="">Formações</a>
-                    <a class="btn btn-link" href="">Workshops</a>
-                    <a class="btn btn-link" href="">Candidaturas</a>
-                    <a class="btn btn-link" href="">Contacto</a>
-                    <a class="btn btn-link" href="">Perguntas Frequentes</a>
+                <h4 class="text-white mb-3">Principais</h4>
+            <a class="btn btn-link" href="index.php">Página Inicial</a>
+            <a class="btn btn-link" href="contacto.php">Contactos</a>
+            <a class="btn btn-link" href="signin.php">Login</a>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h4 class="text-white mb-3">Contacto</h4>

@@ -56,7 +56,7 @@ $result = $conn->query($query);
 
 <!-- Navbar Start -->
 <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
-      <a href="index.html">
+      <a href="index.php">
           <img  src="img/logo.png" alt="" width="35%" style="padding-left:10px"/>
       </a>
     <button
@@ -70,12 +70,9 @@ $result = $conn->query($query);
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <div class="navbar-nav ms-auto p-4 p-lg-0">
         <a href="formacoes.php" class="nav-item nav-link">Formações</a>
-        <a href="workshops.php" class="nav-item nav-link">Workshops online</a>
-        <a href="formulario.php" class="nav-item nav-link">Candidaturas</a>
         <a href="contacto.php" class="nav-item nav-link">Contactos</a>
-        <a href="faq.html" class="nav-item nav-link">FAQ</a>
       </div>
-      <a href="login.php" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block"
+      <a href="signin.php" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block"
         >Login<i class="fa fa-arrow-right ms-3"></i
       ></a>
     </div>
@@ -153,12 +150,10 @@ $result = $conn->query($query);
         <div class="container py-5">
             <div class="row g-5">
                 <div class="col-lg-3 col-md-6">
-                    <h4 class="text-white mb-3">Formações</h4>
-                    <a class="btn btn-link" href="">Workshops Online</a>
-                    <a class="btn btn-link" href="">Candidaturas</a>
-                    <a class="btn btn-link" href="">Contactos</a>
-                    <a class="btn btn-link" href="">FAQ</a>
-                    <a class="btn btn-link" href="">Login</a>
+                <h4 class="text-white mb-3">Principais</h4>
+            <a class="btn btn-link" href="index.php">Página Inicial</a>
+            <a class="btn btn-link" href="contacto.php">Contactos</a>
+            <a class="btn btn-link" href="signin.php">Login</a>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h4 class="text-white mb-3">Contacto</h4>
