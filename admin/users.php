@@ -70,16 +70,8 @@ $result = $conn->query($query);
         </div>
         <div class="navbar-nav w-100">
           <a href="index.html" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-          <div class="nav-item dropdown">
-            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Elements</a>
-            <div class="dropdown-menu bg-transparent border-0">
-              <a href="button.html" class="dropdown-item">Buttons</a>
-              <a href="typography.html" class="dropdown-item">Typography</a>
-              <a href="element.html" class="dropdown-item">Other Elements</a>
-            </div>
-          </div>
-          <a href="form.html" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Forms</a>
           <a href="users.php" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Utilizadores</a>
+          <a href="professores.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Professores</a>
           <a href="listaformacoes.php" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Formações</a>
         </div>
       </nav>
@@ -101,67 +93,11 @@ $result = $conn->query($query);
         </form>
         <div class="navbar-nav align-items-center ms-auto">
           <div class="nav-item dropdown">
-            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-              <i class="fa fa-envelope me-lg-2"></i>
-              <span class="d-none d-lg-inline-flex">Message</span>
-            </a>
+            
             <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-              <a href="#" class="dropdown-item">
-                <div class="d-flex align-items-center">
-                  <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                  <div class="ms-2">
-                    <h6 class="fw-normal mb-0">Jhon send you a message</h6>
-                    <small>15 minutes ago</small>
-                  </div>
-                </div>
-              </a>
-              <hr class="dropdown-divider">
-              <a href="#" class="dropdown-item">
-                <div class="d-flex align-items-center">
-                  <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                  <div class="ms-2">
-                    <h6 class="fw-normal mb-0">Jhon send you a message</h6>
-                    <small>15 minutes ago</small>
-                  </div>
-                </div>
-              </a>
-              <hr class="dropdown-divider">
-              <a href="#" class="dropdown-item">
-                <div class="d-flex align-items-center">
-                  <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                  <div class="ms-2">
-                    <h6 class="fw-normal mb-0">Jhon send you a message</h6>
-                    <small>15 minutes ago</small>
-                  </div>
-                </div>
-              </a>
-              <hr class="dropdown-divider">
-              <a href="#" class="dropdown-item text-center">See all message</a>
-            </div>
-          </div>
-          <div class="nav-item dropdown">
-            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-              <i class="fa fa-bell me-lg-2"></i>
-              <span class="d-none d-lg-inline-flex">Notificatin</span>
-            </a>
-            <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-              <a href="#" class="dropdown-item">
-                <h6 class="fw-normal mb-0">Profile updated</h6>
-                <small>15 minutes ago</small>
-              </a>
-              <hr class="dropdown-divider">
-              <a href="#" class="dropdown-item">
-                <h6 class="fw-normal mb-0">New formation added</h6>
-                <small>15 minutes ago</small>
-              </a>
-              <hr class="dropdown-divider">
-              <a href="#" class="dropdown-item">
-                <h6 class="fw-normal mb-0">Password changed</h6>
-                <small>15 minutes ago</small>
-              </a>
-              <hr class="dropdown-divider">
-              <a href="#" class="dropdown-item text-center">See all notifications</a>
-            </div>
+            
+             
+            
           </div>
           <div class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
@@ -169,10 +105,9 @@ $result = $conn->query($query);
               <span class="d-none d-lg-inline-flex">John Doe</span>
             </a>
             <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-              <a href="#" class="dropdown-item">My Profile</a>
-              <a href="#" class="dropdown-item">Settings</a>
-              <a href="#" class="dropdown-item">Log Out</a>
-            </div>
+                            <a href="#" class="dropdown-item">Meu Perfil</a>
+                            <a href="../logout.php" class="dropdown-item">Log Out</a>
+                        </div>
           </div>
         </div>
       </nav>
@@ -216,23 +151,12 @@ $result = $conn->query($query);
                           <td><?= $row['data_nasc'] ?></td>
                           <td><?= $row['telefone'] ?></td>
                           <td><?= $row['email'] ?></td>
-                          <td><?php
-                              $query = "SELECT nome FROM lista_inscritos where id_utilizador=" . $row['id_utilizador'];
-
-                              $result2 = $conn->query($query);
-                              if ($result2->num_rows > 0) {
-                                while ($row = $result2->fetch_assoc()) {
-                                  echo ($row['nome'] . '<br>');
-                                }
-                              } else {
-                                echo "-";
-                              }
-                              ?></td>
+                       
                           <td class="text-center" nowrap>
-                            <a class="btn btn-primary btn-xs" href="../update_users.php?id_utilizador=<?= $row['id_utilizador'] ?>"><span class="glyphicon glyphicon-edit"></span>
+                          <a class="btn btn-primary btn-xs" href="../update_users.php?id_formacao=<?= $row['id_utilizador'] ?>"><span class="glyphicon glyphicon-edit"></span>
                               <i class="fa fa-pen"></i></a>
                             <form action="../delete_users.php" class="d-inline" method="Post" onsubmit="return confirm('Tens a certeza que queres apagar');">
-                              <input type="hidden" name="id_utilizador" value="<?= $row['id_utilizador'] ?>">
+                            <input type="hidden" name="id_utilizador" value="<?= $row['id_utilizador'] ?>">
                               <button class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span>
                               <i class="fa fa-trash"></i></button>
                             </form>

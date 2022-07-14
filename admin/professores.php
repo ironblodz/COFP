@@ -2,10 +2,10 @@
 session_start();
 include "../connection.php";
 $query = "SELECT id_professor,nome,data_nasc,email,genero,habilitacao,morada,area_formacao,telefone FROM professor";
-$result=$conn->query($query);
+$result = $conn->query($query);
 
-if($result-> num_rows >0) {
-    $row = $result-> fetch_assoc();
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
 }
 ?>
 
@@ -28,7 +28,7 @@ if($result-> num_rows >0) {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
@@ -72,28 +72,10 @@ if($result-> num_rows >0) {
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="index.html" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Elements</a>
-                        <div class="dropdown-menu bg-transparent border-0">
-                            <a href="button.html" class="dropdown-item">Buttons</a>
-                            <a href="typography.html" class="dropdown-item">Typography</a>
-                            <a href="element.html" class="dropdown-item">Other Elements</a>
-                        </div>
-                    </div>
-                    <a href="widget.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a>
-                    <a href="form.html" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Forms</a>
-                    <a href="table.html" class="nav-item nav-link active"><i class="fa fa-table me-2"></i>Tables</a>
-                    <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
-                        <div class="dropdown-menu bg-transparent border-0">
-                            <a href="signin.html" class="dropdown-item">Sign In</a>
-                            <a href="signup.html" class="dropdown-item">Sign Up</a>
-                            <a href="404.html" class="dropdown-item">404 Error</a>
-                            <a href="blank.html" class="dropdown-item">Blank Page</a>
-                        </div>
-                    </div>
+                    <a href="index.html" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    <a href="users.php" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Utilizadores</a>
+                    <a href="professores.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Professores</a>
+                    <a href="listaformacoes.php" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Formações</a>
                 </div>
             </nav>
         </div>
@@ -104,100 +86,43 @@ if($result-> num_rows >0) {
         <div class="content">
             <!-- Navbar Start -->
             <nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
-                <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
-                    <h2 class="text-primary mb-0"><i class="fa fa-hashtag"></i></h2>
-                </a>
-                <a href="#" class="sidebar-toggler flex-shrink-0">
-                    <i class="fa fa-bars"></i>
-                </a>
-                <form class="d-none d-md-flex ms-4">
-                    <input class="form-control border-0" type="search" placeholder="Search">
-                </form>
-                <div class="navbar-nav align-items-center ms-auto">
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <i class="fa fa-envelope me-lg-2"></i>
-                            <span class="d-none d-lg-inline-flex">Message</span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                            <a href="#" class="dropdown-item">
-                                <div class="d-flex align-items-center">
-                                    <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                                    <div class="ms-2">
-                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
-                                        <small>15 minutes ago</small>
-                                    </div>
-                                </div>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item">
-                                <div class="d-flex align-items-center">
-                                    <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                                    <div class="ms-2">
-                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
-                                        <small>15 minutes ago</small>
-                                    </div>
-                                </div>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item">
-                                <div class="d-flex align-items-center">
-                                    <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                                    <div class="ms-2">
-                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
-                                        <small>15 minutes ago</small>
-                                    </div>
-                                </div>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item text-center">See all message</a>
+        <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
+          <h2 class="text-primary mb-0"><i class="fa fa-hashtag"></i></h2>
+        </a>
+        <a href="#" class="sidebar-toggler flex-shrink-0">
+          <i class="fa fa-bars"></i>
+        </a>
+        <form class="d-none d-md-flex ms-4">
+          <input class="form-control border-0" type="search" placeholder="Search">
+        </form>
+        <div class="navbar-nav align-items-center ms-auto">
+          <div class="nav-item dropdown">
+            
+            <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
+            
+             
+            
+          </div>
+          <div class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+              <img class="rounded-circle me-lg-2" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+              <span class="d-none d-lg-inline-flex">John Doe</span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
+                            <a href="#" class="dropdown-item">Meu Perfil</a>
+                            <a href="../logout.php" class="dropdown-item">Log Out</a>
                         </div>
-                    </div>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <i class="fa fa-bell me-lg-2"></i>
-                            <span class="d-none d-lg-inline-flex">Notificatin</span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                            <a href="#" class="dropdown-item">
-                                <h6 class="fw-normal mb-0">Profile updated</h6>
-                                <small>15 minutes ago</small>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item">
-                                <h6 class="fw-normal mb-0">New formation added</h6>
-                                <small>15 minutes ago</small>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item">
-                                <h6 class="fw-normal mb-0">Password changed</h6>
-                                <small>15 minutes ago</small>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item text-center">See all notifications</a>
-                        </div>
-                    </div>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <img class="rounded-circle me-lg-2" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                            <span class="d-none d-lg-inline-flex">John Doe</span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                            <a href="#" class="dropdown-item">My Profile</a>
-                            <a href="#" class="dropdown-item">Settings</a>
-                            <a href="#" class="dropdown-item">Log Out</a>
-                        </div>
-                    </div>
-                </div>
-            </nav>
+          </div>
+        </div>
+      </nav>
             <!-- Navbar End -->
 
 
             <!-- Table Start -->
             <div class="container-fluid pt-4 px-4">
                 <div class="row g-4">
-    
-                       
+
+
                     <div class="col-12">
                         <div class="bg-light rounded h-100 p-4">
                             <h6 class="mb-4">Professores</h6>
@@ -219,40 +144,40 @@ if($result-> num_rows >0) {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    
-                                    <?php
-                if ($result->num_rows > 0) {
-                    while ($row = $result->fetch_assoc()) { ?>
-           
-                                    
-                                        <tr>
-                                         <th scope="row"><?= $row['id_professor'] ?></th>
-                                          <td><?= $row['nome'] ?></td>
-                                            <td><?= $row['data_nasc'] ?></td>
-                                            <td><?= $row['email'] ?></td>
-                                            <td><?= $row['genero'] ?></td>
-                                            <td><?= $row['habilitacao'] ?></td>
-                                            <td><?= $row['morada'] ?></td>
-                                            <td><?= $row['area_formacao'] ?></td>
-                                            <td><?= $row['telefone'] ?></td>
-                                            
-                                            <td class="text-center" nowrap>
-                                            <a class="btn btn-primary btn-xs" href="../update_professor.php?id_professor=<?= $row['id_professor'] ?>"><span class="glyphicon glyphicon-edit"></span>
-                              <i class="fa fa-pen"></i></a>
-                            <form action="../delete_professor.php" class="d-inline" method="Post" onsubmit="return confirm('Tens a certeza que queres apagar');">
-                              <input type="hidden" name="id_professor" value="<?= $row['id_professor'] ?>">
-                              <button class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span>
-                              <i class="fa fa-trash"></i></button>
-                            </form>
-                          </td>
-                                        </tr>
-                                        
-                                        <?php    }
-                } else {
-                    echo " 0 resultados";
-                }
 
-                ?>
+                                        <?php
+                                        if ($result->num_rows > 0) {
+                                            while ($row = $result->fetch_assoc()) { ?>
+
+
+                                                <tr>
+                                                    <th scope="row"><?= $row['id_professor'] ?></th>
+                                                    <td><?= $row['nome'] ?></td>
+                                                    <td><?= $row['data_nasc'] ?></td>
+                                                    <td><?= $row['email'] ?></td>
+                                                    <td><?= $row['genero'] ?></td>
+                                                    <td><?= $row['habilitacao'] ?></td>
+                                                    <td><?= $row['morada'] ?></td>
+                                                    <td><?= $row['area_formacao'] ?></td>
+                                                    <td><?= $row['telefone'] ?></td>
+
+                                                    <td class="text-center" nowrap>
+                                                        <a class="btn btn-primary btn-xs" href="../update_professor.php?id_professor=<?= $row['id_professor'] ?>"><span class="glyphicon glyphicon-edit"></span>
+                                                            <i class="fa fa-pen"></i></a>
+                                                        <form action="../delete_professor.php" class="d-inline" method="Post" onsubmit="return confirm('Tens a certeza que queres apagar');">
+                                                            <input type="hidden" name="id_professor" value="<?= $row['id_professor'] ?>">
+                                                            <button class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span>
+                                                                <i class="fa fa-trash"></i></button>
+                                                        </form>
+                                                    </td>
+                                                </tr>
+
+                                        <?php    }
+                                        } else {
+                                            echo " 0 resultados";
+                                        }
+
+                                        ?>
 
 
                                     </tbody>
@@ -270,7 +195,7 @@ if($result-> num_rows >0) {
                 <div class="bg-light rounded-top p-4">
                     <div class="row">
                         <div class="col-12 col-sm-6 text-center text-sm-start">
-                            &copy; <a href="#">INFO</a>, Todos os direitos Reservados. 
+                            &copy; <a href="#">INFO</a>, Todos os direitos Reservados.
                         </div>
                         <div class="col-12 col-sm-6 text-center text-sm-end">
                             <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
