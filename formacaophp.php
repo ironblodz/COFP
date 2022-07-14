@@ -62,12 +62,12 @@ if($result-> num_rows >0) {
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <div class="navbar-nav ms-auto p-4 p-lg-0">
-        <a href="index.html" class="nav-item nav-link active">Inicio</a>
+
         <a href="formacoes.php" class="nav-item nav-link">Formações</a>
-        <a href="workshops.html" class="nav-item nav-link">Workshops online</a>
-        <a href="#" class="nav-item nav-link">Candidaturas</a>
+
+
         <a href="contacto.html" class="nav-item nav-link">Contactos</a>
-        <a href="faq.html" class="nav-item nav-link">FAQ</a>
+
       </div>
       <a href="signin.php" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block"
         >Login<i class="fa fa-arrow-right ms-3"></i
